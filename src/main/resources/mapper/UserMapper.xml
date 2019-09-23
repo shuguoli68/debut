@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.debut.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.example.debut.entity.User">
+        <result column="user_id" jdbcType="VARCHAR" property="userId" />
+        <result column="pass_word" jdbcType="VARCHAR" property="passWord" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
+        <result column="sex" jdbcType="INTEGER" property="sex" />
+        <result column="age" jdbcType="INTEGER" property="age" />
+        <result column="create_time" jdbcType="BIGINT" property="ctTime" />
+        <result column="update_time" jdbcType="BIGINT" property="utTime" />
+        <!-- column数据库中字段名，property数据model的属性名 -->
+    </resultMap>
+
+    <resultMap id="ToManyResultMap" type="com.example.debut.entity.User">
+        <result column="user_id" jdbcType="VARCHAR" property="userId" />
+        <result column="pass_word" jdbcType="VARCHAR" property="passWord" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
+        <result column="sex" jdbcType="INTEGER" property="sex" />
+        <result column="age" jdbcType="INTEGER" property="age" />
+        <result column="create_time" jdbcType="BIGINT" property="ctTime" />
+        <result column="update_time" jdbcType="BIGINT" property="utTime" />
+        <collection property="diarys" ofType="com.example.debut.entity.Diary" column="user_id">
+            <id property="diary_id" column="diaryId"></id>
+            <result column="title" jdbcType="VARCHAR" property="title" />
+            <result column="content" jdbcType="VARCHAR" property="content" />
+            <result column="theme" jdbcType="INTEGER" property="theme" />
+            <result column="sub_theme" jdbcType="INTEGER" property="subTheme" />
+            <result column="create_time" jdbcType="BIGINT" property="tctTime" />
+            <result column="update_time" jdbcType="BIGINT" property="tutTime" />
+            <result column="user_id" jdbcType="VARCHAR" property="uId" />
+        </collection>
+        <!-- column数据库中字段名，property数据model的属性名 -->
+    </resultMap>
+
+    <insert id="register" parameterType="com.example.debut.entity.User">
+        INSERT INTO `user` VALUES(#{userId,jdbcType=VARCHAR},#{passWord,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{sex,jdbcType=INTEGER},#{age,jdbcType=INTEGER},#{ctTime,jdbcType=BIGINT},#{utTime,jdbcType=BIGINT})
+    </insert>
+
+    <select id="queryById" resultMap="BaseResultMap">
+        SELECT * FROM `user`
+        <where>
+            user_id = #{userId,jdbcType=VARCHAR}
+        </where>
+    </select >
+
+    <update id="upUser" parameterType="com.example.debut.entity.User">
+        UPDATE `user`
+        <trim prefix="SET" suffixOverrides=",">
+            phone = #{phone,jdbcType=VARCHAR},
+            pass_word = #{passWord,jdbcType=VARCHAR},
+            sex = #{sex,jdbcType=INTEGER},
+            age = #{age,jdbcType=INTEGER},
+            update_time = #{utTime,jdbcType=BIGINT}
+        </trim>
+        WHERE user_id = #{userId,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="delUser">
+        DELETE FROM `user` WHERE user_id = #{userId,jdbcType=VARCHAR}
+    </delete >
+
+    <select id="userDiarys" resultMap="ToManyResultMap">
+        SELECT u.*,t.title,t.content,t.theme,t.sub_theme,t.create_time as tcTime,t.update_time as tuTime,t.user_id as uId FROM `user` u, `diary` t
+        <where>
+            u.user_id = t.user_id and u.user_id = #{userId,jdbcType=VARCHAR}
+        </where>
+    </select >
+</mapper>

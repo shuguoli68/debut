@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.debut.mapper.DiaryMapper">
+    <resultMap id="BaseResultMap" type="com.example.debut.entity.Diary">
+        <result column="diary_id" jdbcType="VARCHAR" property="diaryId" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="content" jdbcType="VARCHAR" property="content" />
+        <result column="theme" jdbcType="INTEGER" property="theme" />
+        <result column="sub_theme" jdbcType="INTEGER" property="subTheme" />
+        <result column="create_time" jdbcType="BIGINT" property="ctTime" />
+        <result column="update_time" jdbcType="BIGINT" property="utTime" />
+        <result column="user_id" jdbcType="VARCHAR" property="userId" />
+        <!-- column数据库中字段名，property数据model的属性名 -->
+    </resultMap>
+    <insert id="addDiary" parameterType="com.example.debut.entity.Diary">
+        INSERT INTO `diary` VALUES(#{diaryId,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{theme,jdbcType=INTEGER},#{subTheme,jdbcType=INTEGER},#{ctTime,jdbcType=BIGINT},#{utTime,jdbcType=BIGINT},#{userId,jdbcType=VARCHAR})
+    </insert>
+    <select id="queryById" resultMap="BaseResultMap">
+        SELECT * FROM `diary` WHERE diary_id = #{diaryId,jdbcType=VARCHAR}
+    </select >
+    <update id="upDiary" parameterType="com.example.debut.entity.Diary">
+        UPDATE `diary`
+        SET title = #{title,jdbcType=VARCHAR}, content = #{content,jdbcType=VARCHAR}, theme = #{theme,jdbcType=INTEGER}, sub_theme = #{subTheme,jdbcType=INTEGER}, update_time = #{utTime,jdbcType=BIGINT}
+        WHERE diary_id = #{diaryId,jdbcType=VARCHAR}
+    </update>
+    <delete id="delDiary">
+        DELETE FROM `diary` WHERE diary_id = #{diaryId,jdbcType=VARCHAR}
+    </delete >
+</mapper>
