@@ -3,7 +3,7 @@ package com.example.debut.controller
 import com.example.debut.base.MyResponse
 import com.example.debut.entity.Diary
 import com.example.debut.entity.User
-import com.example.debut.service.UserService
+import com.example.debut.mapper.UserMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController
 class UserController {
 
     @Autowired
-    lateinit var userService: UserService
+    lateinit var userService: UserMapper
 
     @RequestMapping(value = ["/"], method = [RequestMethod.GET])
     fun test():String{

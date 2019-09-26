@@ -13,6 +13,6 @@ class DebutApplication
 fun main(args: Array<String>) {
     runApplication<DebutApplication>(*args)
     //开启各个Controller
-    UserController()
-    DiaryController()
+//    UserController()
+//    DiaryController()
 }

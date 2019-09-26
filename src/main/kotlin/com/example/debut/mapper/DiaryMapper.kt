@@ -1,7 +1,6 @@
 package com.example.debut.mapper
 
 import com.example.debut.entity.Diary
-import com.example.debut.entity.Split
 import com.github.pagehelper.Page
 import org.apache.ibatis.annotations.Delete
 import org.apache.ibatis.annotations.Insert
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface DiaryMapper {
-    @Insert("INSERT INTO `diary` VALUES(#{diaryId,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{theme,jdbcType=INTEGER},#{subTheme,jdbcType=INTEGER},#{ctTime,jdbcType=BIGINT},#{utTime,jdbcType=BIGINT})")
+    @Insert("INSERT INTO `diary` VALUES(#{diaryId,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{theme,jdbcType=INTEGER},#{subTheme,jdbcType=INTEGER},#{ctTime,jdbcType=BIGINT},#{utTime,jdbcType=BIGINT},#{userId,jdbcType=VARCHAR})")
     fun addDiary(diary: Diary):Int
 
     @Delete("DELETE FROM `diary` WHERE diary_id = #{diaryId,jdbcType=VARCHAR}")

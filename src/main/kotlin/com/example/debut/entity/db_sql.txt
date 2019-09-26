@@ -101,3 +101,37 @@ VALUES
     (57, 29 ,'理财顾问', 2),
     (58, 30 ,'查勘定损', 2),
     (59, 31 ,'车险', 2);
+
+5、diary_theme
+
+5.1 建表:
+CREATE TABLE IF NOT EXISTS `diary_tag` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tag_id` int(11) NOT NULL,
+  `tag_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+5.2 插入数据:
+INSERT INTO
+    `diary_tag`
+VALUES
+    (1, 1, '热血沸腾'),
+    (2, 2, '激情澎湃'),
+    (3, 3, '波澜起伏'),
+    (4, 4, '生动有趣'),
+    (5, 5, '诗情画意'),
+    (6, 6, '静谧安宁'),
+    (7, 7, '平淡如水'),
+    (8, 8, '糟糕透顶'),
+    (9, 9, '天灾人祸'),
+    (10, 10, '伤心欲绝'),
+    (11, 11, '其他类型');
+
+中间表：tag和diary关联
+CREATE TABLE IF NOT EXISTS `center_diary_tag` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `diary_id` int(11) NOT NULL,
+  `tag_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
