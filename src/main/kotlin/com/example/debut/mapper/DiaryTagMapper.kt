@@ -2,10 +2,7 @@ package com.example.debut.mapper
 
 import com.example.debut.entity.DiaryTag
 import com.github.pagehelper.Page
-import org.apache.ibatis.annotations.Delete
-import org.apache.ibatis.annotations.Insert
-import org.apache.ibatis.annotations.Select
-import org.apache.ibatis.annotations.Update
+import org.apache.ibatis.annotations.*
 import org.springframework.stereotype.Repository
 
 @Repository
@@ -23,6 +20,12 @@ interface DiaryTagMapper {
 
     @Select("SELECT * FROM `diary_tag` WHERE tag_id = #{tagId,jdbcType=VARCHAR}")
     fun queryById(tagId:Int):List<DiaryTag>
+
+    @Select("SELECT * FROM `diary_tag` WHERE tag_id = #{tagId,jdbcType=VARCHAR}")
+    @Results(
+            Result(property = "tagId", column = "tag_id"),
+            Result(property = "diaries", column = "tag_id", many = Many(select = "com.example.debut.mapper.DiaryMapper.queryByUserId")))
+    fun userDiarys(userId:String):DiaryTag
 
     @Select("select * from `diary_tag`")
     fun listDiaryTag():Page<DiaryTag>
