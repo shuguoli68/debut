@@ -155,3 +155,23 @@ INSERT INTO
 VALUES
     (1, '1', '热血沸腾',135267353,'http://jd.jpg'),
     (2, '2', '热血沸腾',135257453,'http://j567d.jpg');
+
+
+7、news
+
+7.1 建表:
+CREATE TABLE IF NOT EXISTS `news` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `news_id` varchar(50) NOT NULL,
+  `news_str` varchar(50) NOT NULL,
+  `up_time` long(13) NOT NULL,
+  `news_url` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+7.2 插入数据:
+INSERT INTO
+    `news`
+VALUES
+    (1, '1', '热血沸腾',135267353,'http://jd.jpg'),
+    (2, '2', '热血沸腾',135257453,'http://j567d.jpg');

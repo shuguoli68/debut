@@ -1,5 +1,8 @@
 package com.example.debut.entity;
 
+/**
+ * 笑话接口
+ */
 public class Joke {
 
     private int id;
