@@ -56,7 +56,7 @@ class CenterDiaryTagController {
 //        return response
 //    }
 
-    @RequestMapping(value = ["/centerDiaryTag/update"], method = [RequestMethod.POST])
+    @RequestMapping(value = ["/centerDiaryTag/findByTagId"], method = [RequestMethod.POST])
     fun findByTagId(@RequestBody centerDiaryTag: CenterDiaryTag) : MyResponse<Boolean> {
         var response = MyResponse(201, "标题或内容为空", false)
         if (centerDiaryTag.tagId.isNullOrBlank() ){
@@ -73,7 +73,7 @@ class CenterDiaryTagController {
         return response
     }
 
-    @RequestMapping(value = ["/centerDiaryTag/update"], method = [RequestMethod.POST])
+    @RequestMapping(value = ["/centerDiaryTag/findByDiaryId"], method = [RequestMethod.POST])
     fun findByDiaryId(@RequestBody centerDiaryTag: CenterDiaryTag) : MyResponse<Boolean> {
         var response = MyResponse(201, "标题或内容为空", false)
         if (centerDiaryTag.diaryId.isNullOrBlank()){

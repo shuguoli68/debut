@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `news` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `news_id` varchar(50) NOT NULL,
   `news_str` varchar(50) NOT NULL,
-  `up_time` long(13) NOT NULL,
+  `up_time` long(13) NOT NULL,+.
   `news_url` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

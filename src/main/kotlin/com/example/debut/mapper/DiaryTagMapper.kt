@@ -11,7 +11,7 @@ interface DiaryTagMapper {
     fun addDiaryTag(diary_tag: DiaryTag):Int
 
     @Delete("DELETE FROM `diary_tag` WHERE tag_id = #{tagId,jdbcType=VARCHAR}")
-    fun delDiaryTag(tagId: Int):Int
+    fun delDiaryTag(tagId: String):Int
 
     @Update("UPDATE `diary_tag`\n" +
             "        SET tag_str = #{tagStr,jdbcType=VARCHAR}\n" +
@@ -19,7 +19,7 @@ interface DiaryTagMapper {
     fun upDiaryTag(diary_tag: DiaryTag):Int
 
     @Select("SELECT * FROM `diary_tag` WHERE tag_id = #{tagId,jdbcType=VARCHAR}")
-    fun queryById(tagId:Int):List<DiaryTag>
+    fun queryById(tagId:String):List<DiaryTag>
 
     @Select("SELECT * FROM `diary_tag` WHERE tag_id = #{tagId,jdbcType=VARCHAR}")
     @Results(
