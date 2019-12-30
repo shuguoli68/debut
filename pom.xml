@@ -68,6 +68,14 @@
             <version>1.2.12</version>
         </dependency>
 
+        <!--<dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        <dependency>-->
+
+
+
     </dependencies>
 
     <build>
@@ -100,4 +108,6 @@
         </plugins>
     </build>
 
+    <!-- 这里设置打包的形式  默认为jar -->
+    <packaging>war</packaging>
 </project>
