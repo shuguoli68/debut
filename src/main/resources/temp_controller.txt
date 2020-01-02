@@ -1,0 +1,80 @@
+import com.example.debut.base.MyResponse
+import com.example.debut.entity.$Diary$
+import com.example.debut.entity.Split
+import com.example.debut.mapper.$Diary$Mapper
+import com.github.pagehelper.PageHelper
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestMethod
+import org.springframework.web.bind.annotation.RestController
+
+@RestController
+class $Diary$Controller {
+
+    @Autowired
+    lateinit var $diary$Mapper: $Diary$Mapper
+
+    @RequestMapping(value = ["/$diary$/add"], method = [RequestMethod.POST])
+    fun add$Diary$(@RequestBody $diary$: $Diary$) : MyResponse<Boolean> {
+        var response = MyResponse(201, "标题或内容为空", false)
+        if ($diary$.title.isNullOrBlank() || $diary$.content.isNullOrBlank()){
+            return response
+        }
+        val list = $diary$Mapper.queryById($diary$.$diary$Id)
+        if (list.isNotEmpty()){
+            val value = $diary$Mapper.up$Diary$($diary$)
+            if (value>0){
+                response.msg = "该$Diary$已存在,更新成功"
+                response.code = 200
+                response.data = true
+                return response
+            }
+            response.msg = "该$Diary$已存在,更新失败，存入数据库失败"
+            return response
+        }
+        val value = $diary$Mapper.add$Diary$($diary$)
+        if (value>0){
+            response.msg = "添加成功"
+            response.code = 200
+            response.data = true
+            return response
+        }
+        response.msg = "添加失败，存入数据库失败"
+        return response
+    }
+
+    @RequestMapping(value = ["/$diary$/del"], method = [RequestMethod.POST])
+    fun del$Diary$(@RequestBody $diary$: $Diary$) : MyResponse<Boolean> {
+        var response = MyResponse(201, "$Diary$Id为空", false)
+        if ($diary$.$diary$Id.isNullOrBlank()){
+            return response
+        }
+        val value = $diary$Mapper.del$Diary$($diary$.$diary$Id)
+        if (value>0){
+            response.msg = "删除成功"
+            response.code = 200
+            response.data = true
+            return response
+        }
+        response.msg = "删除失败，从数据库删除失败"
+        return response
+    }
+
+    @RequestMapping(value = ["/$diary$/listById"], method = [RequestMethod.POST])
+    fun list$Diary$ById(@RequestBody  $diary$: $Diary$) : MyResponse<List<$Diary$>> {
+        val list = $diary$Mapper.queryById($diary$.$diary$Id)
+        return MyResponse(200, "查询成功", list)
+    }
+    @RequestMapping(value = ["/$diary$/list"], method = [RequestMethod.POST])
+    fun list$Diary$(@RequestBody split: Split) : MyResponse<List<$Diary$>> {
+        PageHelper.startPage<$Diary$>(split.pageNum?:1, split.pageSize?:20)
+        val list = $diary$Mapper.list$Diary$()
+        return MyResponse(200, "查询成功", list)
+    }
+}
+
+
+模板变量：
+Diary KotlinClassName()
+diary KotlinClassName()

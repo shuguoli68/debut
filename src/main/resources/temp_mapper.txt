@@ -1,0 +1,33 @@
+import com.github.pagehelper.Page
+import org.apache.ibatis.annotations.Delete
+import org.apache.ibatis.annotations.Insert
+import org.apache.ibatis.annotations.Select
+import org.apache.ibatis.annotations.Update
+import org.springframework.stereotype.Repository
+
+@Repository
+interface $Diary$Mapper {
+    @Insert("INSERT INTO `$diary$` VALUES(#{id,jdbcType=INTEGER},#{$diary$Id,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR})")
+    fun add$Diary$($diary$: $Diary$):Int
+
+    @Delete("DELETE FROM `$diary$` WHERE $diary$_id = #{$diary$Id,jdbcType=VARCHAR}")
+    fun del$Diary$($diary$Id: String):Int
+
+    @Update("UPDATE `$diary$`\n" +
+            "        SET title = #{title,jdbcType=VARCHAR}, content = #{content,jdbcType=VARCHAR}\n" +
+            "        WHERE $diary$_id = #{$diary$Id,jdbcType=VARCHAR}")
+    fun up$Diary$($diary$: $Diary$):Int
+
+    @Select("SELECT * FROM `$diary$` WHERE $diary$_id = #{$diary$Id,jdbcType=VARCHAR}")
+    fun queryById($diary$Id:String):List<$Diary$>
+
+    @Select("select * from `$diary$`")
+    fun list$Diary$():Page<$Diary$>
+}
+
+
+
+
+模板变量：
+Diary className()
+diary className()

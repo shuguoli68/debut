@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50133
 File Encoding         : 65001
 
-Date: 2019-12-30 21:33:10
+Date: 2020-01-02 20:15:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -216,6 +216,21 @@ INSERT INTO `diary_theme` VALUES ('8', '8', '人事/财务/行政');
 INSERT INTO `diary_theme` VALUES ('9', '9', '其他');
 
 -- ----------------------------
+-- Table structure for `token`
+-- ----------------------------
+DROP TABLE IF EXISTS `token`;
+CREATE TABLE `token` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `user_id` varchar(50) NOT NULL COMMENT '用户id',
+  `user_token` varchar(300) NOT NULL COMMENT '用户登录的token',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+-- ----------------------------
+-- Records of token
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `user`
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
@@ -225,23 +240,25 @@ CREATE TABLE `user` (
   `phone` varchar(20) DEFAULT '',
   `sex` int(11) DEFAULT '0' COMMENT '0:女,1:男',
   `age` int(11) DEFAULT '18' COMMENT '年龄',
-  `create_time` bigint(20) DEFAULT '0' COMMENT '创建的时间戳',
-  `update_time` bigint(20) DEFAULT '0' COMMENT '最近修改User的时间戳',
+  `create_time` datetime DEFAULT '0000-00-00 00:00:00' COMMENT '创建的时间戳',
+  `update_time` datetime DEFAULT '0000-00-00 00:00:00' COMMENT '最近修改User的时间戳',
   PRIMARY KEY (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('123456', '111111', '132250202', '1', '23', '1566823454', '15613566');
-INSERT INTO `user` VALUES ('145906', '123456', '1365000002', '0', '31', '1566123154', '1566112354');
-INSERT INTO `user` VALUES ('142567', '567111', '132250202', '1', '15', '1566123154', '15613566');
-INSERT INTO `user` VALUES ('1', '1234111', '132250202', '2', '23', '1566123154', '15613566');
-INSERT INTO `user` VALUES ('12', '1234111', '132250202', '1', '23', '1566123154', '15613566');
-INSERT INTO `user` VALUES ('1235', '123456', '1365000002', '0', '31', '1566123154', '1566112354');
-INSERT INTO `user` VALUES ('127895', '123456', '1365000002', '0', '31', '1566123154', '1566112354');
-INSERT INTO `user` VALUES ('88', '123456', '132250202', '2', '23', '1566123154', '11113566');
-INSERT INTO `user` VALUES ('818', '123456', '132250202', '2', '23', '1566123154', '15613566');
+INSERT INTO `user` VALUES ('123456', '111111', '132250202', '1', '23', '2019-06-05 17:20:59', '0000-00-00 00:00:00');
+INSERT INTO `user` VALUES ('145906', '123456', '1365000002', '0', '31', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `user` VALUES ('142567', '567111', '132250202', '1', '15', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `user` VALUES ('1', '1234111', '132250202', '2', '23', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `user` VALUES ('12', '1234111', '132250202', '1', '23', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `user` VALUES ('1235', '123456', '1365000002', '0', '31', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `user` VALUES ('127895', '123456', '1365000002', '0', '31', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `user` VALUES ('88', '123456', '132250202', '2', '23', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `user` VALUES ('818', '123456', '132250202', '2', '23', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `user` VALUES ('1257', '123456', '1365000002', '0', '31', '1970-01-19 11:02:03', '1970-01-19 11:01:52');
+INSERT INTO `user` VALUES ('1212', '123456', '132250202', '2', '23', '2020-01-02 17:18:10', '2020-01-02 19:07:31');
 
 -- ----------------------------
 -- Table structure for `work`
