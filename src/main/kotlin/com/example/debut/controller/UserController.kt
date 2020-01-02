@@ -1,6 +1,7 @@
 package com.example.debut.controller
 
 import com.example.debut.base.MyResponse
+import com.example.debut.config.MyHttpSessionListener
 import com.example.debut.entity.Diary
 import com.example.debut.entity.User
 import com.example.debut.mapper.UserMapper
@@ -24,6 +25,12 @@ class UserController {
     @RequestMapping(value = ["/"], method = [RequestMethod.GET])
     fun test():String{
         return "test"
+    }
+
+    @ApiOperation(value = "查看在线人数")
+    @RequestMapping(value = ["/online"], method = [RequestMethod.GET])
+    fun online():String{
+        return "当前在线人数：" + MyHttpSessionListener.online
     }
 
     @ApiOperation(value = "用户注册")

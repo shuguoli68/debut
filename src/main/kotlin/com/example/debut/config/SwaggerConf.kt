@@ -1,4 +1,4 @@
-package com.example.debut.util
+package com.example.debut.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
