@@ -10,14 +10,14 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface DiaryMapper {
-    @Insert("INSERT INTO `diary` VALUES(#{diaryId,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{theme,jdbcType=INTEGER},#{subTheme,jdbcType=INTEGER},#{ctTime,jdbcType=BIGINT},#{utTime,jdbcType=BIGINT},#{userId,jdbcType=VARCHAR})")
+    @Insert("INSERT INTO `diary` VALUES(#{diaryId,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{theme,jdbcType=INTEGER},#{subTheme,jdbcType=INTEGER},#{ctTime,jdbcType=TIMESTAMP},#{utTime,jdbcType=TIMESTAMP},#{userId,jdbcType=VARCHAR})")
     fun addDiary(diary: Diary):Int
 
     @Delete("DELETE FROM `diary` WHERE diary_id = #{diaryId,jdbcType=VARCHAR}")
     fun delDiary(diaryId: String):Int
 
     @Update("UPDATE `diary`\n" +
-            "        SET title = #{title,jdbcType=VARCHAR}, content = #{content,jdbcType=VARCHAR}, theme = #{theme,jdbcType=INTEGER}, sub_theme = #{subTheme,jdbcType=INTEGER}, update_time = #{utTime,jdbcType=BIGINT}\n" +
+            "        SET title = #{title,jdbcType=VARCHAR}, content = #{content,jdbcType=VARCHAR}, theme = #{theme,jdbcType=INTEGER}, sub_theme = #{subTheme,jdbcType=INTEGER}, update_time = #{utTime,jdbcType=TIMESTAMP}\n" +
             "        WHERE diary_id = #{diaryId,jdbcType=VARCHAR}")
     fun upDiary(diary: Diary):Int
 

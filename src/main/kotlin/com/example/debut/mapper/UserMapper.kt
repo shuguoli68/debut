@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository
 @Repository
 interface UserMapper {
 
-    @Insert("INSERT INTO `user` VALUES(#{userId,jdbcType=VARCHAR},#{passWord,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{sex,jdbcType=INTEGER},#{age,jdbcType=INTEGER},#{ctTime,jdbcType=BIGINT},#{utTime,jdbcType=BIGINT})")
+    @Insert("INSERT INTO `user` VALUES(#{userId,jdbcType=VARCHAR},#{passWord,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{sex,jdbcType=INTEGER},#{age,jdbcType=INTEGER},#{ctTime,jdbcType=TIMESTAMP},#{utTime,jdbcType=TIMESTAMP})")
     fun register(user: User):Int
 
     @Delete("DELETE FROM `user` WHERE user_id = #{userId,jdbcType=VARCHAR}")
@@ -19,7 +19,7 @@ interface UserMapper {
             "            pass_word = #{passWord,jdbcType=VARCHAR},\n" +
             "            sex = #{sex,jdbcType=INTEGER},\n" +
             "            age = #{age,jdbcType=INTEGER},\n" +
-            "            update_time = #{utTime,jdbcType=BIGINT}\n" +
+            "            update_time = #{utTime,jdbcType=TIMESTAMP}\n" +
             "        WHERE user_id = #{userId,jdbcType=VARCHAR}")
     fun upUser(user: User):Int
 

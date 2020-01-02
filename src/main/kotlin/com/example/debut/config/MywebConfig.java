@@ -22,7 +22,7 @@ public class MywebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         //拦截器
         registry.addInterceptor(new MyInterceptor())
-                .addPathPatterns("/asd/**");
+                .addPathPatterns("/**");
     }
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @Bean

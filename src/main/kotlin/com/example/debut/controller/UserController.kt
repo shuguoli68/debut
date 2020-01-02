@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
+import javax.servlet.http.Cookie
+import javax.servlet.http.HttpServletResponse
 
 @RestController
 @Api(value = "/user", tags = arrayOf("用户的注册登录删除"))
@@ -59,10 +61,10 @@ class UserController {
 
     @ApiOperation(value = "用户登录")
     @RequestMapping(value = ["/login"], method = [RequestMethod.POST])
-    fun login(@RequestBody user: User/*map:Map<String, String>*/) : MyResponse<User> {
-        val userId = user.userId//map.get("userId")?:""
-        val passWord = user.passWord?:""//map.get("passWord")?:""
-        var response = MyResponse(201, "用户名或密码为空", User(/*userId,passWord,"",0,0,0L,0L,arrayListOf()*/))
+    fun login(@RequestBody user: User, res: HttpServletResponse) : MyResponse<User> {
+        val userId = user.userId
+        val passWord = user.passWord?:""
+        var response = MyResponse(201, "用户名或密码为空", User())
         if (userId.isNullOrBlank() || passWord.isNullOrBlank()){
             return response
         }
@@ -76,6 +78,11 @@ class UserController {
             response.msg = "登录失败，密码错误"+",userID="+userId+",pwd="+passWord+",size="+list.size+",list0="+list[0].toString()
             return response
         }
+        val token = CommonUtil.getToken(userId, passWord)
+
+        val cookie = Cookie("token", token)
+        cookie.path = "/"
+        res.addCookie(cookie)
         return MyResponse(200, "登录成功",list[0])
     }
 
