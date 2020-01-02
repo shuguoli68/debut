@@ -1,6 +1,7 @@
 package com.example.debut.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Diary{
@@ -9,8 +10,8 @@ public class Diary{
     private String content = "";
     private int theme = 0;
     private int subTheme = 0;
-    private long ctTime = 0L;
-    private long utTime = 0L;
+    private Date ctTime = new Date();
+    private Date utTime = new Date();
     private String userId = "";
     private List<DiaryTag> diaryTags= new ArrayList<>();
 
@@ -54,19 +55,19 @@ public class Diary{
         this.subTheme = subTheme;
     }
 
-    public long getCtTime() {
+    public Date getCtTime() {
         return ctTime;
     }
 
-    public void setCtTime(long ctTime) {
+    public void setCtTime(Date ctTime) {
         this.ctTime = ctTime;
     }
 
-    public long getUtTime() {
+    public Date getUtTime() {
         return utTime;
     }
 
-    public void setUtTime(long utTime) {
+    public void setUtTime(Date utTime) {
         this.utTime = utTime;
     }
 

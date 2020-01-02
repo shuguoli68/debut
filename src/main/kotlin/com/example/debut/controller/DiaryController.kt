@@ -4,6 +4,7 @@ import com.example.debut.base.MyResponse
 import com.example.debut.entity.Diary
 import com.example.debut.entity.Split
 import com.example.debut.mapper.DiaryMapper
+import com.example.debut.util.CommonUtil
 import com.github.pagehelper.PageHelper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestBody
@@ -28,6 +29,8 @@ class DiaryController {
             response.msg = "发布失败，该Diary已存在"
             return response
         }
+        diary.ctTime = CommonUtil.getNowDate()
+        diary.utTime = CommonUtil.getNowDate()
         val value = diaryService.addDiary(diary)
         if (value>0){
             response.msg = "发布成功"
@@ -62,6 +65,7 @@ class DiaryController {
         if (diary.title.isNullOrBlank() || diary.content.isNullOrBlank()){
             return response
         }
+        diary.ctTime = CommonUtil.getNowDate()
         val value = diaryService.upDiary(diary)
         if (value>0){
             response.msg = "修改成功"

@@ -4,6 +4,7 @@ import com.example.debut.base.MyResponse
 import com.example.debut.entity.Diary
 import com.example.debut.entity.User
 import com.example.debut.mapper.UserMapper
+import com.example.debut.util.CommonUtil
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -32,6 +33,8 @@ class UserController {
             response.msg = "注册失败，用户名已存在"+",list0="+list[0].toString()
             return response
         }
+        user.ctTime = CommonUtil.getNowDate()
+        user.utTime = CommonUtil.getNowDate()
         val value = userService.register(user = user)
         if (value>0){
             response.msg = "注册成功"
@@ -74,6 +77,7 @@ class UserController {
             response.msg = "修改失败，用户不存在"
             return response
         }
+        user.utTime = CommonUtil.getNowDate()
         val value = userService.upUser(user = user)
         if (value>0){
             response.msg = "修改成功"+",user="+user.toString()+",size="+list.size+",list0="+list[0].toString()
