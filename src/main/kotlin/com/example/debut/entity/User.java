@@ -1,17 +1,29 @@
 package com.example.debut.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@ApiModel(value = "user实体")
 public class User{
+    @ApiModelProperty(value = "用户userId")
     private String userId="";
+    @ApiModelProperty(value = "用户登录密码")
     private String passWord="";
+    @ApiModelProperty(value = "手机号码")
     private String phone="";
+    @ApiModelProperty(value = "性别，整型")
     private int sex=1;
+    @ApiModelProperty(value = "年龄")
     private int age=18;
+    @ApiModelProperty(value = "创建时间")
     private Date ctTime = new Date();
+    @ApiModelProperty(value = "更新时间")
     private Date utTime= new Date();
+    @ApiModelProperty(value = "用户的diarys")
     private List<Diary> diarys= new ArrayList<>();
 
     @Override

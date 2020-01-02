@@ -5,6 +5,8 @@ import com.example.debut.entity.Diary
 import com.example.debut.entity.User
 import com.example.debut.mapper.UserMapper
 import com.example.debut.util.CommonUtil
+import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -12,16 +14,19 @@ import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
+@Api(value = "/user", tags = arrayOf("用户的注册登录删除"))
 class UserController {
 
     @Autowired
     lateinit var userService: UserMapper
 
+    @ApiOperation(value = "测试接口")
     @RequestMapping(value = ["/"], method = [RequestMethod.GET])
     fun test():String{
         return "test"
     }
 
+    @ApiOperation(value = "用户注册")
     @RequestMapping(value = ["/register"], method = [RequestMethod.POST])
     fun register(@RequestBody user: User) :MyResponse<Boolean> {
         var response = MyResponse(201, "用户名或密码为空", false)
@@ -45,6 +50,7 @@ class UserController {
         return response
     }
 
+    @ApiOperation(value = "用户登录")
     @RequestMapping(value = ["/login"], method = [RequestMethod.POST])
     fun login(@RequestBody user: User/*map:Map<String, String>*/) : MyResponse<User> {
         val userId = user.userId//map.get("userId")?:""
@@ -66,6 +72,7 @@ class UserController {
         return MyResponse(200, "登录成功",list[0])
     }
 
+    @ApiOperation(value = "用户更新资料")
     @RequestMapping(value = ["/user/update"], method = [RequestMethod.POST])
     fun updateUser(@RequestBody user: User) :MyResponse<Boolean> {
         var response = MyResponse(201, "用户ID为空", false)
@@ -88,6 +95,7 @@ class UserController {
         return response
     }
 
+    @ApiOperation(value = "删除用户")
     @RequestMapping(value = ["/user/del"], method = [RequestMethod.POST])
     fun delUser(@RequestBody map:Map<String, String>) :MyResponse<User> {
         val userId = map.get("userId")?:""
@@ -110,6 +118,7 @@ class UserController {
         return response
     }
 
+    @ApiOperation(value = "查询用户详细资料，携带diary")
     @RequestMapping(value = ["/user/diarys"], method = [RequestMethod.POST])
     fun userDiarys(@RequestBody map:Map<String, String>) :MyResponse<User> {
         val userId = map.get("userId")?:""
@@ -125,6 +134,7 @@ class UserController {
         return MyResponse(200, "查询成功",user)
     }
 
+    @ApiOperation(value = "用户下的所有diary")
     @RequestMapping(value = ["/user/listDiary"], method = [RequestMethod.POST])
     fun listDiary(@RequestBody user: User) :MyResponse<List<Diary>> {
         val userId = user.userId
