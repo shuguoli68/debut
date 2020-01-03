@@ -7,18 +7,18 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface DiaryTagMapper {
-    @Insert("INSERT INTO `diary_tag` VALUES(#{id,jdbcType=INTEGER},#{tagId,jdbcType=VARCHAR},#{tagStr,jdbcType=VARCHAR})")
+    @Insert("INSERT INTO `diary_tag` VALUES(#{id},#{tagId},#{tagStr})")
     fun addDiaryTag(diary_tag: DiaryTag):Int
 
-    @Delete("DELETE FROM `diary_tag` WHERE tag_id = #{tagId,jdbcType=VARCHAR}")
+    @Delete("DELETE FROM `diary_tag` WHERE tag_id = #{tagId}")
     fun delDiaryTag(tagId: String):Int
 
     @Update("UPDATE `diary_tag`\n" +
-            "        SET tag_str = #{tagStr,jdbcType=VARCHAR}\n" +
-            "        WHERE tag_id = #{tagId,jdbcType=VARCHAR}")
+            "        SET tag_str = #{tagStr}\n" +
+            "        WHERE tag_id = #{tagId}")
     fun upDiaryTag(diary_tag: DiaryTag):Int
 
-    @Select("SELECT * FROM `diary_tag` WHERE tag_id = #{tagId,jdbcType=VARCHAR}")
+    @Select("SELECT * FROM `diary_tag` WHERE tag_id = #{tagId}")
     fun queryById(tagId:String):List<DiaryTag>
 
 //    @Select("SELECT * FROM `diary_tag` WHERE tag_id = #{tagId,jdbcType=VARCHAR}")

@@ -10,18 +10,18 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface TokenMapper {
-    @Insert("INSERT INTO `token` VALUES(#{id,jdbcType=INTEGER},#{userId,jdbcType=VARCHAR},#{userToken,jdbcType=VARCHAR})")
+    @Insert("INSERT INTO `token` VALUES(#{id},#{userId},#{userToken})")
     fun addToken(token: Token):Int
 
-    @Delete("DELETE FROM `token` WHERE user_id = #{userId,jdbcType=VARCHAR}")
+    @Delete("DELETE FROM `token` WHERE user_id = #{userId}")
     fun delToken(userId: String):Int
 
     @Update("UPDATE `token`\n" +
-            "        SET user_token = #{userToken,jdbcType=VARCHAR}\n" +
-            "        WHERE user_id = #{userId,jdbcType=VARCHAR}")
+            "        SET user_token = #{userToken}\n" +
+            "        WHERE user_id = #{userId}")
     fun upToken(token: Token):Int
 
-    @Select("SELECT * FROM `token` WHERE user_id = #{userId,jdbcType=VARCHAR}")
+    @Select("SELECT * FROM `token` WHERE user_id = #{userId}")
     fun queryById(userId:String):List<Token>
 
     @Select("select * from `token`")

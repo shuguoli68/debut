@@ -8,32 +8,36 @@ import org.springframework.stereotype.Repository
 @Repository
 interface UserMapper {
 
-    @Insert("INSERT INTO `user` VALUES(#{userId,jdbcType=VARCHAR},#{passWord,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{sex,jdbcType=INTEGER},#{age,jdbcType=INTEGER},#{ctTime,jdbcType=TIMESTAMP},#{utTime,jdbcType=TIMESTAMP})")
+    @Insert("INSERT INTO `user` VALUES(#{userId},#{passWord},#{phone},#{sex},#{age},#{ctTime},#{utTime})")
     fun register(user: User):Int
 
-    @Delete("DELETE FROM `user` WHERE user_id = #{userId,jdbcType=VARCHAR}")
+    @Delete("DELETE FROM `user` WHERE user_id = #{userId}")
     fun delUser(userId: String):Int
 
     @Update("UPDATE `user` SET\n" +
-            "            phone = #{phone,jdbcType=VARCHAR},\n" +
-            "            pass_word = #{passWord,jdbcType=VARCHAR},\n" +
-            "            sex = #{sex,jdbcType=INTEGER},\n" +
-            "            age = #{age,jdbcType=INTEGER},\n" +
-            "            update_time = #{utTime,jdbcType=TIMESTAMP}\n" +
-            "        WHERE user_id = #{userId,jdbcType=VARCHAR}")
+            "            phone = #{phone},\n" +
+            "            pass_word = #{passWord},\n" +
+            "            sex = #{sex},\n" +
+            "            age = #{age},\n" +
+            "            update_time = #{utTime}\n" +
+            "        WHERE user_id = #{userId}")
     fun upUser(user: User):Int
 
-    @Select("SELECT * FROM `user` WHERE user_id = #{userId,jdbcType=VARCHAR}")
+    @Select("SELECT * FROM `user` WHERE user_id = #{userId}")
+    @Results(
+            Result(property = "userId", column = "user_id"),
+            Result(property = "diarys", column = "user_id", many = Many(select = "com.example.debut.mapper.DiaryMapper.queryByUserId"))
+    )
     fun queryById(userId:String):List<User>
 
-    @Select("SELECT * FROM `user` WHERE user_id = #{userId,jdbcType=VARCHAR}")
+    @Select("SELECT * FROM `user` WHERE user_id = #{userId}")
     @Results(
             Result(property = "userId", column = "user_id"),
             Result(property = "diarys", column = "user_id", many = Many(select = "com.example.debut.mapper.DiaryMapper.queryByUserId"))
     )
     fun userDiarys(userId:String):User
 
-    @Select("SELECT * FROM `diary` WHERE user_id = #{userId,jdbcType=VARCHAR}")
+    @Select("SELECT * FROM `diary` WHERE user_id = #{userId}")
     @Results(
             Result(property = "diaryId", column = "diary_id"),
             Result(property = "diaryTags", column = "diary_id", many = Many(select = "com.example.debut.mapper.CenterDiaryTagMapper.queryByDiaryId"))
