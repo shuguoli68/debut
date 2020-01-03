@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 /**
  * 配置 拦截、过滤、监听
  */
-@Configuration
+//@Configuration
 public class MywebConfig implements WebMvcConfigurer {
 
     @Override

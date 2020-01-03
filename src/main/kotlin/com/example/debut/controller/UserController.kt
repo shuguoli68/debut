@@ -2,6 +2,7 @@ package com.example.debut.controller
 
 import com.example.debut.base.MyResponse
 import com.example.debut.config.MyHttpSessionListener
+import com.example.debut.config.UserLoginToken
 import com.example.debut.entity.Diary
 import com.example.debut.entity.User
 import com.example.debut.mapper.UserMapper
@@ -17,7 +18,7 @@ import javax.servlet.http.Cookie
 import javax.servlet.http.HttpServletResponse
 
 @RestController
-@Api(value = "/user", tags = arrayOf("用户的注册登录删除"))
+@Api(value = "/user", tags = arrayOf("用户的增删改查"))
 class UserController {
 
     @Autowired
@@ -86,6 +87,7 @@ class UserController {
         return MyResponse(200, "登录成功",list[0])
     }
 
+    @UserLoginToken
     @ApiOperation(value = "用户更新资料")
     @RequestMapping(value = ["/user/update"], method = [RequestMethod.POST])
     fun updateUser(@RequestBody user: User) :MyResponse<Boolean> {
@@ -109,6 +111,7 @@ class UserController {
         return response
     }
 
+    @UserLoginToken
     @ApiOperation(value = "删除用户")
     @RequestMapping(value = ["/user/del"], method = [RequestMethod.POST])
     fun delUser(@RequestBody map:Map<String, String>) :MyResponse<User> {
@@ -132,6 +135,7 @@ class UserController {
         return response
     }
 
+    @UserLoginToken
     @ApiOperation(value = "查询用户详细资料，携带diary")
     @RequestMapping(value = ["/user/diarys"], method = [RequestMethod.POST])
     fun userDiarys(@RequestBody map:Map<String, String>) :MyResponse<User> {
@@ -148,6 +152,7 @@ class UserController {
         return MyResponse(200, "查询成功",user)
     }
 
+    @UserLoginToken
     @ApiOperation(value = "用户下的所有diary")
     @RequestMapping(value = ["/user/listDiary"], method = [RequestMethod.POST])
     fun listDiary(@RequestBody user: User) :MyResponse<List<Diary>> {

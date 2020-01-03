@@ -5,3 +5,6 @@
 
 开发工具：IntelliJ IDEA 2019.2.1 x64  Community版  
 SpringBoot + Mybatis,数据存储在UniServer，一个小的无需安装的数据库软件
+
+文档：  
+http://localhost:8085/doc.html
