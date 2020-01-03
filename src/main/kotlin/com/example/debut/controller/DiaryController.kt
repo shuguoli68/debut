@@ -1,8 +1,10 @@
 package com.example.debut.controller
 
 import com.example.debut.base.MyResponse
+import com.example.debut.entity.CenterDiaryTag
 import com.example.debut.entity.Diary
 import com.example.debut.entity.Split
+import com.example.debut.mapper.CenterDiaryTagMapper
 import com.example.debut.mapper.DiaryMapper
 import com.example.debut.util.CommonUtil
 import com.github.pagehelper.PageHelper
@@ -21,6 +23,7 @@ class DiaryController {
     @Autowired
     lateinit var diaryService: DiaryMapper
 
+
     @ApiOperation(value = "增加diary")
     @RequestMapping(value = ["/diary/add"], method = [RequestMethod.POST])
     fun addDiary(@RequestBody diary: Diary) : MyResponse<Boolean> {
@@ -28,6 +31,7 @@ class DiaryController {
         if (diary.title.isNullOrBlank() || diary.content.isNullOrBlank()){
             return response
         }
+        diary.diaryId = diary.userId+System.currentTimeMillis()
         val list = diaryService.queryById(diary.diaryId)
         if (list.isNotEmpty()){
             response.msg = "发布失败，该Diary已存在"
@@ -37,6 +41,7 @@ class DiaryController {
         diary.utTime = CommonUtil.getNowDate()
         val value = diaryService.addDiary(diary)
         if (value>0){
+            saveTag(diary.tagId, diary.diaryId)
             response.msg = "发布成功"
             response.code = 200
             response.data = true
@@ -74,6 +79,7 @@ class DiaryController {
         diary.ctTime = CommonUtil.getNowDate()
         val value = diaryService.upDiary(diary)
         if (value>0){
+            saveTag(diary.tagId, diary.diaryId)
             response.msg = "修改成功"
             response.code = 200
             response.data = true
@@ -89,5 +95,19 @@ class DiaryController {
         PageHelper.startPage<Diary>(split.pageNum?:1, split.pageSize?:20)
         val list = diaryService.listDiary()
         return MyResponse(200, "查询成功", list)
+    }
+
+    /**
+     * 增加标签
+     */
+    private fun saveTag(tagId:String, diaryId:String){
+        if (tagId.isNullOrBlank())
+            return
+        diaryService.delCenterDiaryTag(diaryId)//删除文章原来的标签
+        val tags = tagId.split("|")
+        for (id in tags){
+            if (!id.isNullOrBlank())//添加文章新的标签
+                diaryService.addCenterDiaryTag(CenterDiaryTag(0, diaryId, id))
+        }
     }
 }

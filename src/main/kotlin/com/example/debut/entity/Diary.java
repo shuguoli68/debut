@@ -24,6 +24,8 @@ public class Diary{
     private Date utTime = new Date();
     @ApiModelProperty(value = "发布人的userId")
     private String userId = "";
+    @ApiModelProperty(value = "标签的tagId,用|隔开")
+    private String tagId = "";
     @ApiModelProperty(value = "日记列表")
     private List<DiaryTag> diaryTags= new ArrayList<>();
 
@@ -97,5 +99,13 @@ public class Diary{
 
     public void setDiaryTags(List<DiaryTag> diaryTags) {
         this.diaryTags = diaryTags;
+    }
+
+    public String getTagId() {
+        return tagId;
+    }
+
+    public void setTagId(String tagId) {
+        this.tagId = tagId;
     }
 }

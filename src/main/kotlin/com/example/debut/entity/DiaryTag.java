@@ -4,9 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiaryTag {
-    private String tagId;
-    private String tagStr;
-    private List<Diary> diaries = new ArrayList<>();
+    private int id = 0;
+    private String tagId = "";
+    private String tagStr = "";
+
+    public DiaryTag() {
+    }
+
+    public DiaryTag(int id, String tagId, String tagStr) {
+        this.id = id;
+        this.tagId = tagId;
+        this.tagStr = tagStr;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTagId() {
         return tagId;
@@ -22,13 +39,5 @@ public class DiaryTag {
 
     public void setTagStr(String tagStr) {
         this.tagStr = tagStr;
-    }
-
-    public List<Diary> getDiaries() {
-        return diaries;
-    }
-
-    public void setDiaries(List<Diary> diaries) {
-        this.diaries = diaries;
     }
 }

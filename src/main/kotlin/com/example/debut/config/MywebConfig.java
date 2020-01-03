@@ -5,6 +5,7 @@ import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -42,5 +43,11 @@ public class MywebConfig implements WebMvcConfigurer {
         srb.setListener(new MyHttpSessionListener());
         System.out.println("listener");
         return srb;
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        //registry.addResourceHandler("/files/**").addResourceLocations("file:D:\\upload\\");
+        registry.addResourceHandler("/files/**").addResourceLocations("file:/home/project/upload/");
     }
 }
