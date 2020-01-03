@@ -138,8 +138,8 @@ class UserController {
     @UserLoginToken
     @ApiOperation(value = "查询用户详细资料，携带diary")
     @RequestMapping(value = ["/user/diarys"], method = [RequestMethod.POST])
-    fun userDiarys(@RequestBody map:Map<String, String>) :MyResponse<User> {
-        val userId = map.get("userId")?:""
+    fun userDiarys(@RequestBody user: User) :MyResponse<User> {
+        val userId = user.userId
         var response = MyResponse(201, "用户名为空", User(/*userId,"","",0,0,0L,0L, arrayListOf()*/))
         if (userId.isNullOrBlank()){
             return response

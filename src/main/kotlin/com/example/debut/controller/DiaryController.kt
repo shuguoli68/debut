@@ -89,6 +89,20 @@ class DiaryController {
         return response
     }
 
+    @ApiOperation(value = "根据diaryId查询")
+    @RequestMapping(value = ["/diary/query"], method = [RequestMethod.POST])
+    fun queryDiary(@RequestBody diary: Diary) : MyResponse<Diary> {
+        var response = MyResponse(201, "DiaryId为空", Diary())
+        if (diary.diaryId.isNullOrBlank()){
+            return response
+        }
+        val value = diaryService.queryById(diary.diaryId)
+        response.data = if (value.isNotEmpty()) value[0] else Diary()
+        response.code = 200
+        response.msg = "查询成功"
+        return response
+    }
+
     @ApiOperation(value = "获取diary列表")
     @RequestMapping(value = ["/diary/list"], method = [RequestMethod.POST])
     fun listDiary(@RequestBody split: Split) : MyResponse<List<Diary>> {

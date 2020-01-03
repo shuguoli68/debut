@@ -29,12 +29,14 @@ interface UserMapper {
     @Select("SELECT * FROM `user` WHERE user_id = #{userId,jdbcType=VARCHAR}")
     @Results(
             Result(property = "userId", column = "user_id"),
-            Result(property = "diarys", column = "user_id", many = Many(select = "com.example.debut.mapper.DiaryMapper.queryByUserId")),
-            Result(property = "tagId", column = "tag_id"),
-            Result(property = "diaryTags", column = "tag_id", many = Many(select = "com.example.debut.mapper.DiaryTagMapper.queryById"))
+            Result(property = "diarys", column = "user_id", many = Many(select = "com.example.debut.mapper.DiaryMapper.queryByUserId"))
     )
     fun userDiarys(userId:String):User
 
     @Select("SELECT * FROM `diary` WHERE user_id = #{userId,jdbcType=VARCHAR}")
+    @Results(
+            Result(property = "diaryId", column = "diary_id"),
+            Result(property = "diaryTags", column = "diary_id", many = Many(select = "com.example.debut.mapper.CenterDiaryTagMapper.queryByDiaryId"))
+    )
     fun listDiary(userId:String):List<Diary>
 }

@@ -20,15 +20,24 @@ interface DiaryMapper {
     fun upDiary(diary: Diary):Int
 
     @Select("SELECT * FROM `diary` WHERE diary_id = #{diaryId,jdbcType=VARCHAR}")
+    @Results(
+            Result(property = "diaryId", column = "diary_id"),
+            Result(property = "diaryTags", column = "diary_id", many = Many(select = "com.example.debut.mapper.CenterDiaryTagMapper.queryByDiaryId"))
+    )
     fun queryById(diaryId:String):List<Diary>
 
     @Select("SELECT * FROM `diary` WHERE user_id = #{userId,jdbcType=VARCHAR}")
+    @Results(
+            Result(property = "diaryId", column = "diary_id"),
+            Result(property = "diaryTags", column = "diary_id", many = Many(select = "com.example.debut.mapper.CenterDiaryTagMapper.queryByDiaryId"))
+    )
     fun queryByUserId(userId:String):List<Diary>
 
     @Select("select * from `diary`")
     @Results(
             Result(property = "diaryId", column = "diary_id"),
-            Result(property = "diaryTags", column = "diary_id", many = Many(select = "com.example.debut.mapper.CenterDiaryTagMapper.queryByDiaryId")))
+            Result(property = "diaryTags", column = "diary_id", many = Many(select = "com.example.debut.mapper.CenterDiaryTagMapper.queryByDiaryId"))
+    )
     fun listDiary():Page<Diary>
 
     @Insert("INSERT INTO `center_diary_tag` VALUES(#{id,jdbcType=INTEGER},#{diaryId,jdbcType=VARCHAR},#{tagId,jdbcType=VARCHAR})")
