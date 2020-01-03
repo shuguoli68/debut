@@ -1,18 +1,30 @@
 package com.example.debut.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+@ApiModel(value = "diary实体")
 public class Diary{
+    @ApiModelProperty(value = "日记diaryId")
     private String diaryId = "";
+    @ApiModelProperty(value = "日记标题")
     private String title= "";
+    @ApiModelProperty(value = "日记内容")
     private String content = "";
+    @ApiModelProperty(value = "日记大分类")
     private int theme = 0;
+    @ApiModelProperty(value = "日记小分类")
     private int subTheme = 0;
+    @ApiModelProperty(value = "日记首次发布时间")
     private Date ctTime = new Date();
+    @ApiModelProperty(value = "日记更新时间")
     private Date utTime = new Date();
+    @ApiModelProperty(value = "发布人的userId")
     private String userId = "";
+    @ApiModelProperty(value = "日记列表")
     private List<DiaryTag> diaryTags= new ArrayList<>();
 
     public String getDiaryId() {

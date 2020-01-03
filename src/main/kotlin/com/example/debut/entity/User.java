@@ -9,7 +9,7 @@ import java.util.List;
 
 @ApiModel(value = "user实体")
 public class User{
-    @ApiModelProperty(value = "用户userId")
+    @ApiModelProperty(value = "用户userId",required = true)
     private String userId="";
     @ApiModelProperty(value = "用户登录密码")
     private String passWord="";

@@ -6,6 +6,8 @@ import com.example.debut.entity.Split
 import com.example.debut.mapper.DiaryMapper
 import com.example.debut.util.CommonUtil
 import com.github.pagehelper.PageHelper
+import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -13,11 +15,13 @@ import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
+@Api(value = "/diary", tags = arrayOf("diary的增删改查"))
 class DiaryController {
 
     @Autowired
     lateinit var diaryService: DiaryMapper
 
+    @ApiOperation(value = "增加diary")
     @RequestMapping(value = ["/diary/add"], method = [RequestMethod.POST])
     fun addDiary(@RequestBody diary: Diary) : MyResponse<Boolean> {
         var response = MyResponse(201, "标题或内容为空", false)
@@ -42,6 +46,7 @@ class DiaryController {
         return response
     }
 
+    @ApiOperation(value = "删除diary")
     @RequestMapping(value = ["/diary/del"], method = [RequestMethod.POST])
     fun delDiary(@RequestBody diary: Diary) : MyResponse<Boolean> {
         var response = MyResponse(201, "DiaryId为空", false)
@@ -59,6 +64,7 @@ class DiaryController {
         return response
     }
 
+    @ApiOperation(value = "编辑更新diary")
     @RequestMapping(value = ["/diary/update"], method = [RequestMethod.POST])
     fun upDiary(@RequestBody diary: Diary) : MyResponse<Boolean> {
         var response = MyResponse(201, "标题或内容为空", false)
@@ -77,6 +83,7 @@ class DiaryController {
         return response
     }
 
+    @ApiOperation(value = "获取diary列表")
     @RequestMapping(value = ["/diary/list"], method = [RequestMethod.POST])
     fun listDiary(@RequestBody split: Split) : MyResponse<List<Diary>> {
         PageHelper.startPage<Diary>(split.pageNum?:1, split.pageSize?:20)
