@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : python专用
+Source Server         : debut
 Source Server Version : 50133
 Source Host           : localhost:3306
 Source Database       : db_javaee_debut
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50133
 File Encoding         : 65001
 
-Date: 2020-01-02 20:15:27
+Date: 2020-01-03 17:32:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -39,14 +39,29 @@ INSERT INTO `account` VALUES ('3', '键行', '2');
 DROP TABLE IF EXISTS `center_diary_tag`;
 CREATE TABLE `center_diary_tag` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `diary_id` int(11) NOT NULL,
-  `tag_id` int(11) NOT NULL,
+  `diary_id` varchar(50) NOT NULL,
+  `tag_id` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of center_diary_tag
 -- ----------------------------
+INSERT INTO `center_diary_tag` VALUES ('1', '12121578033729348', '1');
+INSERT INTO `center_diary_tag` VALUES ('2', '12121578033729348', '3');
+INSERT INTO `center_diary_tag` VALUES ('3', '12121578043136346', '1');
+INSERT INTO `center_diary_tag` VALUES ('4', '12121578043136346', '2');
+INSERT INTO `center_diary_tag` VALUES ('5', '12121578043136346', '5');
+INSERT INTO `center_diary_tag` VALUES ('6', '12121578043333953', '6');
+INSERT INTO `center_diary_tag` VALUES ('7', '12121578043333953', '5');
+INSERT INTO `center_diary_tag` VALUES ('8', '12121578043333953', '8');
+INSERT INTO `center_diary_tag` VALUES ('9', '12121578043333953', '9');
+INSERT INTO `center_diary_tag` VALUES ('10', '12121578043333953', '10');
+INSERT INTO `center_diary_tag` VALUES ('11', '12121578043567694', '6');
+INSERT INTO `center_diary_tag` VALUES ('12', '12121578043567694', '5');
+INSERT INTO `center_diary_tag` VALUES ('13', '12121578043567694', '8');
+INSERT INTO `center_diary_tag` VALUES ('14', '12121578043567694', '9');
+INSERT INTO `center_diary_tag` VALUES ('15', '12121578043567694', '10');
 
 -- ----------------------------
 -- Table structure for `company`
@@ -71,11 +86,11 @@ DROP TABLE IF EXISTS `diary`;
 CREATE TABLE `diary` (
   `diary_id` varchar(20) NOT NULL DEFAULT '',
   `title` varchar(255) DEFAULT '',
-  `content` varchar(255) DEFAULT '',
+  `content` longtext,
   `theme` int(11) DEFAULT '0',
   `sub_theme` int(11) DEFAULT '0',
-  `create_time` bigint(20) DEFAULT '15',
-  `update_time` bigint(20) DEFAULT '15',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `user_id` varchar(20) DEFAULT '',
   PRIMARY KEY (`diary_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -83,12 +98,16 @@ CREATE TABLE `diary` (
 -- ----------------------------
 -- Records of diary
 -- ----------------------------
-INSERT INTO `diary` VALUES ('986131', '金融', '十二分金额看过惹人家看', '0', '31', '1566123154', '1566112354', '142567');
-INSERT INTO `diary` VALUES ('123531', '黄金', '时开车门都没时考评得分时面覅', '3', '5', '1566133254', '1562345454', '123456');
-INSERT INTO `diary` VALUES ('456', '底', '哦时开车门都没时考评得分时面覅', '3', '5', '1566133254', '1562345454', '123456');
-INSERT INTO `diary` VALUES ('123', '底', '哦时开车门都没时考评得分时面覅', '3', '5', '1566133254', '1562345454', '123456');
-INSERT INTO `diary` VALUES ('15658', 'kol', '为借口的出口量', '1', '5', '1566133254', '1562345454', '123456');
-INSERT INTO `diary` VALUES ('15658678', 'kol', '为借口的出口量', '1', '5', '1566133254', '1562345454', '123456');
+INSERT INTO `diary` VALUES ('986131', '金融', '十二分金额看过惹人家看', '0', '31', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '142567');
+INSERT INTO `diary` VALUES ('123531', '黄金', '时开车门都没时考评得分时面覅', '3', '5', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '123456');
+INSERT INTO `diary` VALUES ('456', '底', '哦时开车门都没时考评得分时面覅', '3', '5', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '123456');
+INSERT INTO `diary` VALUES ('123', '底', '哦时开车门都没时考评得分时面覅', '3', '5', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '123456');
+INSERT INTO `diary` VALUES ('15658', 'kol', '为借口的出口量', '1', '5', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '123456');
+INSERT INTO `diary` VALUES ('15658678', 'kol', '为借口的出口量', '1', '5', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '123456');
+INSERT INTO `diary` VALUES ('12121578033729348', '2020元旦', '放了一天假', '0', '0', '2020-01-03 14:42:09', '2020-01-03 15:48:22', '1212');
+INSERT INTO `diary` VALUES ('12121578043136346', '35sg', 'gfwgsdg', '0', '0', '2020-01-03 17:18:56', '2020-01-03 17:18:56', '1212');
+INSERT INTO `diary` VALUES ('12121578043333953', '35sg', 'gfwgsdg', '0', '0', '2020-01-03 17:22:14', '2020-01-03 17:22:14', '1212');
+INSERT INTO `diary` VALUES ('12121578043567694', '35sg', 'gfwgsdg', '0', '0', '2020-01-03 17:26:07', '2020-01-03 17:26:07', '1212');
 
 -- ----------------------------
 -- Table structure for `diary_sub_theme`
