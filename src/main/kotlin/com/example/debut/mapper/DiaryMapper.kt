@@ -36,8 +36,9 @@ interface DiaryMapper {
     @Select("select * from `diary`")
     @Results(
             Result(property = "diaryId", column = "diary_id"),
-            Result(property = "diaryTags", column = "diary_id", many = Many(select = "com.example.debut.mapper.CenterDiaryTagMapper.queryByDiaryId"))
-//            Result(property = "diaryThemes", column = "diary_id", many = Many(select = "com.example.debut.mapper.DiaryThemeMapper.queryById"))
+            Result(property = "diaryTags", column = "diary_id", many = Many(select = "com.example.debut.mapper.CenterDiaryTagMapper.queryByDiaryId")),
+            Result(property = "diaryId", column = "diary_id"),
+            Result(property = "diaryThemes", column = "diary_id", many = Many(select = "com.example.debut.mapper.DiaryThemeMapper.queryByDiaryId"))
     )
     fun listDiary():Page<Diary>
 

@@ -18,7 +18,7 @@ interface CenterDiaryThemeMapper {
     fun delCenterDiaryTheme(diaryId:String):Int
 
     @Select("SELECT r.* FROM center_diary_theme h,diary_sub_theme r where h.sub_theme_id=r.sub_theme_id AND h.diary_id=#{diaryId}")
-    fun queryByDiaryId(diary_id:String):List<DiarySubTheme>
+    fun queryByDiaryId(diaryId:String):List<DiarySubTheme>
 //    @Update("UPDATE `center_diary_theme`\n" +
 //            "        SET title = #{title}, content = #{content}\n" +
 //            "        WHERE center_diary_theme_id = #{center_diary_themeId}")
