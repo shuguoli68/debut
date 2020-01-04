@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-@ApiModel(value = "diary实体")
+@ApiModel(value = "Diary")
 public class Diary{
     @ApiModelProperty(value = "日记diaryId")
     private String diaryId = "";
