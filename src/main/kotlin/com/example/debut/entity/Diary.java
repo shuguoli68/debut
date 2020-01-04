@@ -26,8 +26,10 @@ public class Diary{
     private String userId = "";
     @ApiModelProperty(value = "标签的tagId,用|隔开")
     private String tagId = "";
-    @ApiModelProperty(value = "日记列表")
+    @ApiModelProperty(value = "日记标签列表")
     private List<DiaryTag> diaryTags= new ArrayList<>();
+    @ApiModelProperty(value = "日记分类列表")
+    private List<DiaryTheme> diaryThemes= new ArrayList<>();
 
     public String getDiaryId() {
         return diaryId;
@@ -107,5 +109,13 @@ public class Diary{
 
     public void setTagId(String tagId) {
         this.tagId = tagId;
+    }
+
+    public List<DiaryTheme> getDiaryThemes() {
+        return diaryThemes;
+    }
+
+    public void setDiaryThemes(List<DiaryTheme> diaryThemes) {
+        this.diaryThemes = diaryThemes;
     }
 }

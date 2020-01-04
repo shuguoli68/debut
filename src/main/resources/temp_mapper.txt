@@ -7,18 +7,18 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface $Diary$Mapper {
-    @Insert("INSERT INTO `$diary$` VALUES(#{id,jdbcType=INTEGER},#{$diary$Id,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR})")
+    @Insert("INSERT INTO `$diary$` VALUES(#{id},#{$diary$Id},#{title})")
     fun add$Diary$($diary$: $Diary$):Int
 
-    @Delete("DELETE FROM `$diary$` WHERE $diary$_id = #{$diary$Id,jdbcType=VARCHAR}")
+    @Delete("DELETE FROM `$diary$` WHERE $diary$_id = #{$diary$Id}")
     fun del$Diary$($diary$Id: String):Int
 
     @Update("UPDATE `$diary$`\n" +
-            "        SET title = #{title,jdbcType=VARCHAR}, content = #{content,jdbcType=VARCHAR}\n" +
-            "        WHERE $diary$_id = #{$diary$Id,jdbcType=VARCHAR}")
+            "        SET title = #{title}, content = #{content}\n" +
+            "        WHERE $diary$_id = #{$diary$Id}")
     fun up$Diary$($diary$: $Diary$):Int
 
-    @Select("SELECT * FROM `$diary$` WHERE $diary$_id = #{$diary$Id,jdbcType=VARCHAR}")
+    @Select("SELECT * FROM `$diary$` WHERE $diary$_id = #{$diary$Id}")
     fun queryById($diary$Id:String):List<$Diary$>
 
     @Select("select * from `$diary$`")
