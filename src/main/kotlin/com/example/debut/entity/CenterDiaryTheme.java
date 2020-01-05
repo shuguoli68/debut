@@ -14,6 +14,16 @@ public class CenterDiaryTheme {
     @ApiModelProperty(value = "小分类ID")
     private int subThemeId = 1;
 
+    public CenterDiaryTheme() {
+    }
+
+    public CenterDiaryTheme(int id, String diaryId, int themeId, int subThemeId) {
+        this.id = id;
+        this.diaryId = diaryId;
+        this.themeId = themeId;
+        this.subThemeId = subThemeId;
+    }
+
     public int getId() {
         return id;
     }
