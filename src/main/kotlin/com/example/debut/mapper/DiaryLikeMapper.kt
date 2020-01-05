@@ -31,8 +31,8 @@ interface DiaryLikeMapper {
     @Select("SELECT * FROM `diary_like` WHERE user_id = #{userId} AND diary_id = #{diaryId} AND collect = #{collect}")
     fun queryCollect(diary_like: DiaryLike):List<DiaryLike>
 
-    @Delete("DELETE FROM `diary_like` WHERE user_id = #{userId} AND diary_id = #{diaryId}")
-    fun queryByUserDiaryId(userId: String, diaryId: String):List<DiaryLike>
+    @Delete("SELECT * FROM `diary_like` WHERE user_id = #{userId} AND diary_id = #{diaryId}")
+    fun queryByUserDiaryId(userId: String, diaryId: String):DiaryLike
 
     @Select("select * from `diary_like`")
     fun listDiaryLike():Page<DiaryLike>

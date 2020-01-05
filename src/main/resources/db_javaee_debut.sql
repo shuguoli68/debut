@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50133
 File Encoding         : 65001
 
-Date: 2020-01-05 18:35:34
+Date: 2020-01-05 20:47:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -126,6 +126,24 @@ INSERT INTO `diary` VALUES ('12121578033729348', '2020元旦', '放了一天假'
 INSERT INTO `diary` VALUES ('12121578043136346', '35sg', 'gfwgsdg', '0', '0', '2020-01-03 17:18:56', '2020-01-03 17:18:56', '1212');
 INSERT INTO `diary` VALUES ('12121578043333953', '35sg', 'gfwgsdg', '0', '0', '2020-01-03 17:22:14', '2020-01-03 17:22:14', '1212');
 INSERT INTO `diary` VALUES ('12121578043567694', '35sg', 'gfwgsdg', '0', '0', '2020-01-03 17:26:07', '2020-01-03 17:26:07', '1212');
+
+-- ----------------------------
+-- Table structure for `diary_like`
+-- ----------------------------
+DROP TABLE IF EXISTS `diary_like`;
+CREATE TABLE `diary_like` (
+  `id` int(11) NOT NULL DEFAULT '0',
+  `user_id` varchar(20) DEFAULT NULL,
+  `diary_id` varchar(20) DEFAULT NULL,
+  `like` int(2) DEFAULT NULL,
+  `collect` int(2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of diary_like
+-- ----------------------------
+INSERT INTO `diary_like` VALUES ('0', '1212', '12121578043567694', '1', '1');
 
 -- ----------------------------
 -- Table structure for `diary_sub_theme`
