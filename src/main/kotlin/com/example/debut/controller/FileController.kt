@@ -40,7 +40,7 @@ class FileController {
         val suffixName = fileName.substring(fileName.lastIndexOf("."))
         logger.info("上传的后缀名为：$suffixName")
         // 文件上传后的路径
-        val filePath = "C://E//cacheFiles//debut"
+        val filePath = "C://E//cacheFiles//debut//"
         // 解决中文问题，liunx下中文路径，图片显示问题
         // fileName = UUID.randomUUID() + suffixName;
         val dest = File(filePath + fileName)
@@ -53,7 +53,7 @@ class FileController {
             file.transferTo(dest)
             response.code = 200
             response.msg = "上传成功"
-            response.data = "成功,文件名:$fileName"
+            response.data = "${filePath + fileName}"
             return response
         } catch (e: IllegalStateException) {
             e.printStackTrace()

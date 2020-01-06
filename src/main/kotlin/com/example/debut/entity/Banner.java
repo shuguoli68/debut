@@ -4,7 +4,7 @@ package com.example.debut.entity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(value = "DiaryTag", description = "首页banner图片")
+@ApiModel(value = "Banner", description = "首页banner图片")
 public class Banner {
     @ApiModelProperty(value = "banner表的id,自增")
     private int id = 0;
