@@ -32,7 +32,7 @@ class FileController {
     }
 
     //文件上传相关代码
-    @ApiOperation(value = "上传文件，返回文件的绝对路径")
+    @ApiOperation(value = "上传文件，返回文件的路径")
     @RequestMapping(value = "/upload", method = [RequestMethod.POST])
     @ResponseBody
     fun upload(@RequestParam("file") file: MultipartFile): MyResponse<String> {
@@ -60,7 +60,7 @@ class FileController {
             file.transferTo(dest)
             response.code = 200
             response.msg = "上传成功"
-            response.data = "${filePath + fileName}"
+            response.data = "${fileName}"
             return response
         } catch (e: IllegalStateException) {
             e.printStackTrace()
@@ -71,20 +71,21 @@ class FileController {
         return response
     }
 
-    //文件下载相关代码
+    /**
+     * 文件下载相关代码
+     * ":.+"解决以.结尾的参数值缺失问题
+     */
     @ApiOperation(value = "下载文件")
-    @RequestMapping("/download/{fileName}", method = [RequestMethod.POST])
-    fun downloadFile(@PathVariable("fileName") fileName:String, request: /*org.apache.catalina.servlet4preview.http.*/HttpServletRequest, response: HttpServletResponse) {
-//        val fileName = "FileUploadTests.java"
-        var result = MyResponse(201, "失败", "文件为空")
+    @RequestMapping("/download/{fileName:.+}", method = [RequestMethod.POST, RequestMethod.DELETE, RequestMethod.GET])
+    fun downloadFile(@RequestParam("fileName") fileName:String, request: /*org.apache.catalina.servlet4preview.http.*/HttpServletRequest, response: HttpServletResponse) {
         if (fileName != null) {
             //当前是从该工程的WEB-INF//File//下获取文件(该目录可以在下面一行代码配置)然后下载到C:\\users\\downloads即本机的默认下载的目录
-            val realPath = "C://E//cacheFiles//download//"//request.getServletContext().getRealPath("//WEB-INF//")
+            val realPath = "C://E//cacheFiles//debut//"//request.getServletContext().getRealPath("//WEB-INF//")
             val file = File(realPath, fileName)
             if (file.exists()) {
+                println("download file.exists=true ${file.path}")
                 response.contentType = "application/force-download"// 设置强制下载不打开
-                response.addHeader("Content-Disposition",
-                        "attachment;fileName=$fileName")// 设置文件名
+                response.addHeader("Content-Disposition", "attachment;fileName=$fileName")// 设置文件名
                 val buffer = ByteArray(1024)
                 var fis: FileInputStream? = null
                 var bis: BufferedInputStream? = null
@@ -98,13 +99,11 @@ class FileController {
                         i = bis.read(buffer)
                     }
                     println("download success")
-//                    result.code = 200
-//                    result.msg = "下载成功"
-//                    result.data = "下载成功"
-//                    return result
                 } catch (e: Exception) {
+                    println("download Exception ${e.message}")
                     e.printStackTrace()
                 } finally {
+                    println("download finally")
                     if (bis != null) {
                         try {
                             bis.close()
@@ -122,10 +121,12 @@ class FileController {
 
                     }
                 }
+            }else{
+                println("download file.exists=false ${file.path}")
             }
+        }else {
+            println("download fileName == null")
         }
-        println("download fail")
-//        return result
     }
 
     //多文件上传
