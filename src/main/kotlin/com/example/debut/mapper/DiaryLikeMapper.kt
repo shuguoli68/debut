@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface DiaryLikeMapper {
-    @Insert("INSERT INTO `diary_like` VALUES(#{id},#{userId},#{diaryId},#{like},#{collect})")
+    @Insert("INSERT INTO `diary_like` VALUES(#{id},#{userId},#{diaryId},#{love},#{collect})")
     fun addDiaryLike(diary_like: DiaryLike):Int
 
     @Delete("DELETE FROM `diary_like` WHERE user_id = #{userId}")
@@ -21,18 +21,18 @@ interface DiaryLikeMapper {
     fun delByDiaryId(diaryId: String):Int
 
     @Update("UPDATE `diary_like`\n" +
-            "        SET like = #{like}, collect = #{collect}\n" +
+            "        SET love = #{love}, collect = #{collect}\n" +
             "        WHERE user_id = #{userId} AND diary_id = #{diaryId}")
     fun upDiaryLike(diary_like: DiaryLike):Int
 
-    @Select("SELECT * FROM `diary_like` WHERE user_id = #{userId} AND diary_id = #{diaryId} AND like = #{like}")
+    @Select("SELECT * FROM `diary_like` WHERE user_id = #{userId} AND diary_id = #{diaryId} AND love = #{love}")
     fun queryLike(diary_like: DiaryLike):List<DiaryLike>
 
     @Select("SELECT * FROM `diary_like` WHERE user_id = #{userId} AND diary_id = #{diaryId} AND collect = #{collect}")
     fun queryCollect(diary_like: DiaryLike):List<DiaryLike>
 
-    @Delete("SELECT * FROM `diary_like` WHERE user_id = #{userId} AND diary_id = #{diaryId}")
-    fun queryByUserDiaryId(userId: String, diaryId: String):DiaryLike
+    @Select("SELECT * FROM `diary_like` WHERE user_id = #{userId} AND diary_id = #{diaryId}")
+    fun queryByUserDiaryId(diary_like: DiaryLike):List<DiaryLike>
 
     @Select("select * from `diary_like`")
     fun listDiaryLike():Page<DiaryLike>

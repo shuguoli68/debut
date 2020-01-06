@@ -1,11 +1,7 @@
 package com.example.debut.controller
 
 import com.example.debut.base.MyResponse
-import com.example.debut.entity.CenterDiaryTag
-import com.example.debut.entity.CenterDiaryTheme
-import com.example.debut.entity.Diary
-import com.example.debut.entity.Split
-import com.example.debut.mapper.CenterDiaryTagMapper
+import com.example.debut.entity.*
 import com.example.debut.mapper.DiaryMapper
 import com.example.debut.util.CommonUtil
 import com.github.pagehelper.PageHelper
@@ -42,8 +38,7 @@ class DiaryController {
         diary.utTime = CommonUtil.getNowDate()
         val value = diaryService.addDiary(diary)
         if (value>0){
-            saveTag(diary.tagId, diary.diaryId)
-            saveTheme(diary.diaryId, diary.theme, diary.subTheme)
+            saveCenter(diary.tagId, diary.diaryId, diary.theme, diary.subTheme)
             response.msg = "发布成功"
             response.code = 200
             response.data = true
@@ -62,8 +57,7 @@ class DiaryController {
         }
         val value = diaryService.delDiary(diary.diaryId)
         if (value > 0){
-            delTag(diaryId = diary.diaryId)
-            delTheme(diaryId = diary.diaryId)
+            delCenter(diaryId = diary.diaryId)
             response.msg = "删除成功"
             response.code = 200
             response.data = true
@@ -83,8 +77,7 @@ class DiaryController {
         diary.ctTime = CommonUtil.getNowDate()
         val value = diaryService.upDiary(diary)
         if (value>0){
-            saveTag(diary.tagId, diary.diaryId)
-            saveTheme(diary.diaryId, diary.theme, diary.subTheme)
+            saveCenter(diary.tagId, diary.diaryId, diary.theme, diary.subTheme)
             response.msg = "修改成功"
             response.code = 200
             response.data = true
@@ -119,7 +112,8 @@ class DiaryController {
     /**
      * 增加中间表标签
      */
-    private fun saveTag(tagId:String, diaryId:String){
+    private fun saveCenter(tagId:String, diaryId:String, themeId:Int, subThemeId:Int){
+        //增加中间表标签
         if (tagId.isNullOrBlank())
             return
         diaryService.delCenterDiaryTag(diaryId)//删除文章原来的标签
@@ -128,27 +122,23 @@ class DiaryController {
             if (!id.isNullOrBlank())//添加文章新的标签
                 diaryService.addCenterDiaryTag(CenterDiaryTag(0, diaryId, id))
         }
-    }
 
-    /**
-     * 删除中间表 标签
-     */
-    private fun delTag(diaryId:String){
-        diaryService.delCenterDiaryTag(diaryId)
-    }
-
-    /**
-     * 增加中间表分类
-     */
-    private fun saveTheme(diaryId:String, themeId:Int, subThemeId:Int){
+        //增加中间表分类
         diaryService.delCenterDiaryTheme(diaryId)//删除文章原来的分类
         diaryService.addCenterDiaryTheme(CenterDiaryTheme(0, diaryId, themeId, subThemeId))
     }
 
     /**
-     * 删除中间表分类
+     * 删除中间表 标签
      */
-    private fun delTheme(diaryId:String){
+    private fun delCenter(diaryId:String){
+        //删除中间表 标签
+        diaryService.delCenterDiaryTag(diaryId)
+
+        //删除中间表分类
         diaryService.delCenterDiaryTheme(diaryId)
+
+        //删除赞、踩、收藏表
+        diaryService.delLikeByDiaryId(diaryId)
     }
 }

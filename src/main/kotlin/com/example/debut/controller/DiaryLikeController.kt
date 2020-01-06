@@ -27,19 +27,19 @@ class DiaryLikeController {
         if (diaryLike.userId.isNullOrBlank() || diaryLike.diaryId.isNullOrBlank()){
             return response
         }
-//        val list = diaryLikeMapper.queryByUserDiaryId(diaryLike.userId, diaryLike.diaryId)
-//        if (list != null){
-//            val value = diaryLikeMapper.upDiaryLike(diaryLike)
-//            if (value>0){
-//                response.msg = "该DiaryLike已存在,更新成功"
-//                response.code = 200
-//                response.data = true
-//                return response
-//            }
-//            response.code = 202
-//            response.msg = "该DiaryLike已存在,更新失败，存入数据库失败"
-//            return response
-//        }
+        val list = diaryLikeMapper.queryByUserDiaryId(diaryLike)
+        if (list != null && list.isNotEmpty()){
+            val value = diaryLikeMapper.upDiaryLike(diaryLike)
+            if (value>0){
+                response.msg = "该DiaryLike已存在,更新成功"
+                response.code = 200
+                response.data = true
+                return response
+            }
+            response.code = 202
+            response.msg = "该DiaryLike已存在,更新失败，存入数据库失败"
+            return response
+        }
         val value = diaryLikeMapper.addDiaryLike(diaryLike)
         if (value>0){
             response.msg = "添加成功"

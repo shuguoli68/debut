@@ -114,23 +114,26 @@ class UserController {
     @UserLoginToken
     @ApiOperation(value = "删除用户")
     @RequestMapping(value = ["/user/del"], method = [RequestMethod.POST])
-    fun delUser(@RequestBody map:Map<String, String>) :MyResponse<User> {
-        val userId = map.get("userId")?:""
+    fun delUser(@RequestBody user: User) :MyResponse<User> {
+        val userId = user.userId
         var response = MyResponse(201, "用户ID为空", User(/*userId,"","",0,0,0L,0L, arrayListOf()*/))
         if (userId.isNullOrBlank()){
             return response
         }
         val list = userService.queryById(userId = userId)
         if (list.isEmpty()){
+            response.code = 203
             response.msg = "删除失败，用户不存在"
             return response
         }
         val value = userService.delUser(userId = userId)
         if (value>0){
+            delCenter(userId)
             response.msg = "删除成功"
             response.code = 200
             return response
         }
+        response.code = 202
         response.msg = "删除失败，从数据库删除失败"
         return response
     }
@@ -167,5 +170,12 @@ class UserController {
             return response
         }
         return MyResponse(200, "查询成功",diarys)
+    }
+
+    /**
+     * 删除与用户关联的其他表中数据
+     */
+    private fun delCenter(userId: String) {
+        userService.delLikeByUserId(userId)
     }
 }

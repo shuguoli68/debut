@@ -12,9 +12,20 @@ public class DiaryLike {
     @ApiModelProperty(value = "日记ID")
     private String diaryId = "";
     @ApiModelProperty(value = "用户对日记的操作，赞(1)、踩(0),默认1")
-    private int like = 1;
+    private int love = 1;
     @ApiModelProperty(value = "用户对日记的操作，收藏(1),取消收藏(0),默认0")
     private int collect = 0;
+
+    public DiaryLike() {
+    }
+
+    public DiaryLike(int id, String userId, String diaryId, int love, int collect) {
+        this.id = id;
+        this.userId = userId;
+        this.diaryId = diaryId;
+        this.love = love;
+        this.collect = collect;
+    }
 
     public int getId() {
         return id;
@@ -40,12 +51,12 @@ public class DiaryLike {
         this.diaryId = diaryId;
     }
 
-    public int getLike() {
-        return like;
+    public int getLove() {
+        return love;
     }
 
-    public void setLike(int like) {
-        this.like = like;
+    public void setLove(int love) {
+        this.love = love;
     }
 
     public int getCollect() {

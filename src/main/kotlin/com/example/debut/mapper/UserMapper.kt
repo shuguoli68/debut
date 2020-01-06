@@ -43,4 +43,10 @@ interface UserMapper {
             Result(property = "diaryTags", column = "diary_id", many = Many(select = "com.example.debut.mapper.CenterDiaryTagMapper.queryByDiaryId"))
     )
     fun listDiary(userId:String):List<Diary>
+
+    /**
+     * 删除用户时，删除用户对文章的点赞、踩、收藏表中数据
+     */
+    @Delete("DELETE FROM `diary_like` WHERE user_id = #{userId}")
+    fun delLikeByUserId(userId: String):Int
 }

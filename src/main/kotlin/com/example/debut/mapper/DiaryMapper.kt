@@ -60,4 +60,10 @@ interface DiaryMapper {
 
     @Delete("DELETE FROM `center_diary_theme` WHERE diary_id = #{diaryId}")
     fun delCenterDiaryTheme(diaryId:String):Int
+
+    /**
+     * 赞、踩、收藏表
+     */
+    @Delete("DELETE FROM `diary_like` WHERE diary_id = #{diaryId}")
+    fun delLikeByDiaryId(diaryId: String):Int
 }
