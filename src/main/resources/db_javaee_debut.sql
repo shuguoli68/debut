@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50133
 File Encoding         : 65001
 
-Date: 2020-01-06 15:49:05
+Date: 2020-01-06 16:48:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -45,12 +45,14 @@ CREATE TABLE `banner` (
   `des` varchar(255) DEFAULT NULL COMMENT '简介',
   `mstr` varchar(255) DEFAULT NULL COMMENT '备用字段',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of banner
 -- ----------------------------
-INSERT INTO `banner` VALUES ('1', 'C://E//cacheFiles//debut//splash.png', 'https://github.com/', '开屏', '启动图片', '');
+INSERT INTO `banner` VALUES ('1', 'banner1.png', 'https://translate.google.cn/', '都市生活', 'banner图片', '');
+INSERT INTO `banner` VALUES ('2', 'banner2.png', 'https://github.com/', '野生自然', 'banner图片', '');
+INSERT INTO `banner` VALUES ('3', 'banner3.png', 'https://baidu.com/', '景区风光', 'banner图片', '');
 
 -- ----------------------------
 -- Table structure for `center_diary_tag`
