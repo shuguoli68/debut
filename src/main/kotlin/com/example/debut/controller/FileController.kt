@@ -1,6 +1,8 @@
 package com.example.debut.controller
 
 import com.example.debut.base.MyResponse
+import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
 import org.springframework.ui.Model
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -11,22 +13,27 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 import java.io.*
 
+@Api(value = "/File", tags = arrayOf("文件的上传下载"))
 @RestController
 class FileController {
 //maven : javax.servlet:javax.servlet-api:3.1.0
+
+    @ApiOperation(value = "测试test")
     @RequestMapping(value = ["/test"], method = [RequestMethod.GET])
     fun testFile(): String {
         return "testFile"
     }
 
-    @RequestMapping("/greeting")
+    @ApiOperation(value = "测试携带参数test")
+    @RequestMapping("/greeting", method = [RequestMethod.GET])
     fun greeting(@RequestParam(value = "name", required = false, defaultValue = "World") name: String, model: Model): String {
         model.addAttribute("name", name)
         return "greeting"
     }
 
     //文件上传相关代码
-    @RequestMapping(value = "/upload")
+    @ApiOperation(value = "上传文件，返回文件的绝对路径")
+    @RequestMapping(value = "/upload", method = [RequestMethod.POST])
     @ResponseBody
     fun upload(@RequestParam("file") file: MultipartFile): MyResponse<String> {
         var response = MyResponse(201, "失败", "文件为空")
@@ -65,13 +72,14 @@ class FileController {
     }
 
     //文件下载相关代码
-    @RequestMapping("/download")
-    fun downloadFile(request: /*org.apache.catalina.servlet4preview.http.*/HttpServletRequest, response: HttpServletResponse): String? {
-        val fileName = "FileUploadTests.java"
+    @ApiOperation(value = "下载文件")
+    @RequestMapping("/download/{fileName}", method = [RequestMethod.POST])
+    fun downloadFile(@PathVariable("fileName") fileName:String, request: /*org.apache.catalina.servlet4preview.http.*/HttpServletRequest, response: HttpServletResponse) {
+//        val fileName = "FileUploadTests.java"
+        var result = MyResponse(201, "失败", "文件为空")
         if (fileName != null) {
             //当前是从该工程的WEB-INF//File//下获取文件(该目录可以在下面一行代码配置)然后下载到C:\\users\\downloads即本机的默认下载的目录
-            val realPath = request.getServletContext().getRealPath(
-                    "//WEB-INF//")
+            val realPath = "C://E//cacheFiles//download//"//request.getServletContext().getRealPath("//WEB-INF//")
             val file = File(realPath, fileName)
             if (file.exists()) {
                 response.contentType = "application/force-download"// 设置强制下载不打开
@@ -89,7 +97,11 @@ class FileController {
                         os.write(buffer, 0, i)
                         i = bis.read(buffer)
                     }
-                    println("success")
+                    println("download success")
+//                    result.code = 200
+//                    result.msg = "下载成功"
+//                    result.data = "下载成功"
+//                    return result
                 } catch (e: Exception) {
                     e.printStackTrace()
                 } finally {
@@ -112,10 +124,12 @@ class FileController {
                 }
             }
         }
-        return null
+        println("download fail")
+//        return result
     }
 
     //多文件上传
+    @ApiOperation(value = "多文件上传")
     @RequestMapping(value = "/batch/upload", method = [RequestMethod.POST])
     @ResponseBody
     fun handleFileUpload(request: HttpServletRequest): String {

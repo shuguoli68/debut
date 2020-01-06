@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : python专用
+Source Server         : debut
 Source Server Version : 50133
 Source Host           : localhost:3306
 Source Database       : db_javaee_debut
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50133
 File Encoding         : 65001
 
-Date: 2020-01-05 20:47:48
+Date: 2020-01-06 15:49:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,6 +34,25 @@ INSERT INTO `account` VALUES ('2', '工行', '1');
 INSERT INTO `account` VALUES ('3', '键行', '2');
 
 -- ----------------------------
+-- Table structure for `banner`
+-- ----------------------------
+DROP TABLE IF EXISTS `banner`;
+CREATE TABLE `banner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `img_path` varchar(255) DEFAULT NULL COMMENT '图片地址',
+  `url_path` varchar(255) DEFAULT NULL COMMENT '链接地址',
+  `title` varchar(255) DEFAULT NULL COMMENT '标题',
+  `des` varchar(255) DEFAULT NULL COMMENT '简介',
+  `mstr` varchar(255) DEFAULT NULL COMMENT '备用字段',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of banner
+-- ----------------------------
+INSERT INTO `banner` VALUES ('1', 'C://E//cacheFiles//debut//splash.png', 'https://github.com/', '开屏', '启动图片', '');
+
+-- ----------------------------
 -- Table structure for `center_diary_tag`
 -- ----------------------------
 DROP TABLE IF EXISTS `center_diary_tag`;
@@ -49,9 +68,6 @@ CREATE TABLE `center_diary_tag` (
 -- ----------------------------
 INSERT INTO `center_diary_tag` VALUES ('1', '12121578033729348', '1');
 INSERT INTO `center_diary_tag` VALUES ('2', '12121578033729348', '3');
-INSERT INTO `center_diary_tag` VALUES ('3', '12121578043136346', '1');
-INSERT INTO `center_diary_tag` VALUES ('4', '12121578043136346', '2');
-INSERT INTO `center_diary_tag` VALUES ('5', '12121578043136346', '5');
 INSERT INTO `center_diary_tag` VALUES ('6', '12121578043333953', '6');
 INSERT INTO `center_diary_tag` VALUES ('7', '12121578043333953', '5');
 INSERT INTO `center_diary_tag` VALUES ('8', '12121578043333953', '8');
@@ -123,7 +139,6 @@ INSERT INTO `diary` VALUES ('123', '底', '哦时开车门都没时考评得分�
 INSERT INTO `diary` VALUES ('15658', 'kol', '为借口的出口量', '1', '5', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '123456');
 INSERT INTO `diary` VALUES ('15658678', 'kol', '为借口的出口量', '1', '5', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '123456');
 INSERT INTO `diary` VALUES ('12121578033729348', '2020元旦', '放了一天假', '1', '1', '2020-01-03 14:42:09', '2020-01-03 15:48:22', '1212');
-INSERT INTO `diary` VALUES ('12121578043136346', '35sg', 'gfwgsdg', '0', '0', '2020-01-03 17:18:56', '2020-01-03 17:18:56', '1212');
 INSERT INTO `diary` VALUES ('12121578043333953', '35sg', 'gfwgsdg', '0', '0', '2020-01-03 17:22:14', '2020-01-03 17:22:14', '1212');
 INSERT INTO `diary` VALUES ('12121578043567694', '35sg', 'gfwgsdg', '0', '0', '2020-01-03 17:26:07', '2020-01-03 17:26:07', '1212');
 
@@ -132,18 +147,21 @@ INSERT INTO `diary` VALUES ('12121578043567694', '35sg', 'gfwgsdg', '0', '0', '2
 -- ----------------------------
 DROP TABLE IF EXISTS `diary_like`;
 CREATE TABLE `diary_like` (
-  `id` int(11) NOT NULL DEFAULT '0',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(20) DEFAULT NULL,
   `diary_id` varchar(20) DEFAULT NULL,
-  `like` int(2) DEFAULT NULL,
+  `love` int(2) DEFAULT NULL,
   `collect` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of diary_like
 -- ----------------------------
-INSERT INTO `diary_like` VALUES ('0', '1212', '12121578043567694', '1', '1');
+INSERT INTO `diary_like` VALUES ('8', '1212', '12121578043567694', '0', '1');
+INSERT INTO `diary_like` VALUES ('2', '123456', '12121578043567694', '1', '0');
+INSERT INTO `diary_like` VALUES ('9', '12', '12121578043567694', '0', '0');
+INSERT INTO `diary_like` VALUES ('7', '1212', '123531', '1', '1');
 
 -- ----------------------------
 -- Table structure for `diary_sub_theme`
@@ -308,13 +326,11 @@ CREATE TABLE `user` (
 INSERT INTO `user` VALUES ('123456', '111111', '132250202', '1', '23', '2019-06-05 17:20:59', '0000-00-00 00:00:00');
 INSERT INTO `user` VALUES ('145906', '123456', '1365000002', '0', '31', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 INSERT INTO `user` VALUES ('142567', '567111', '132250202', '1', '15', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `user` VALUES ('1', '1234111', '132250202', '2', '23', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 INSERT INTO `user` VALUES ('12', '1234111', '132250202', '1', '23', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 INSERT INTO `user` VALUES ('1235', '123456', '1365000002', '0', '31', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 INSERT INTO `user` VALUES ('127895', '123456', '1365000002', '0', '31', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 INSERT INTO `user` VALUES ('88', '123456', '132250202', '2', '23', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 INSERT INTO `user` VALUES ('818', '123456', '132250202', '2', '23', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `user` VALUES ('1257', '123456', '1365000002', '0', '31', '1970-01-19 11:02:03', '1970-01-19 11:01:52');
 INSERT INTO `user` VALUES ('1212', '123456', '132250202', '2', '23', '2020-01-02 17:18:10', '2020-01-02 19:07:31');
 
 -- ----------------------------
