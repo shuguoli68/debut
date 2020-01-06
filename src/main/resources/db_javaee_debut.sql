@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50133
 File Encoding         : 65001
 
-Date: 2020-01-06 16:48:55
+Date: 2020-01-06 18:01:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -155,7 +155,7 @@ CREATE TABLE `diary_like` (
   `love` int(2) DEFAULT NULL,
   `collect` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of diary_like
@@ -164,6 +164,26 @@ INSERT INTO `diary_like` VALUES ('8', '1212', '12121578043567694', '0', '1');
 INSERT INTO `diary_like` VALUES ('2', '123456', '12121578043567694', '1', '0');
 INSERT INTO `diary_like` VALUES ('9', '12', '12121578043567694', '0', '0');
 INSERT INTO `diary_like` VALUES ('7', '1212', '123531', '1', '1');
+INSERT INTO `diary_like` VALUES ('15', '1212', '12121578033729348', '1', '1');
+INSERT INTO `diary_like` VALUES ('16', '818', '12121578033729348', '1', '1');
+
+-- ----------------------------
+-- Table structure for `diary_like_count`
+-- ----------------------------
+DROP TABLE IF EXISTS `diary_like_count`;
+CREATE TABLE `diary_like_count` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `diary_id` varchar(20) DEFAULT NULL,
+  `love` int(11) DEFAULT NULL,
+  `unlove` int(11) DEFAULT NULL,
+  `collect` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of diary_like_count
+-- ----------------------------
+INSERT INTO `diary_like_count` VALUES ('4', '12121578033729348', '1', '0', '1');
 
 -- ----------------------------
 -- Table structure for `diary_sub_theme`

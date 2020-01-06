@@ -2,6 +2,7 @@ package com.example.debut.mapper
 
 import com.example.debut.entity.Diary
 import com.example.debut.entity.DiaryLike
+import com.example.debut.entity.DiaryLikeCount
 import com.github.pagehelper.Page
 import org.apache.ibatis.annotations.Delete
 import org.apache.ibatis.annotations.Insert
@@ -36,4 +37,27 @@ interface DiaryLikeMapper {
 
     @Select("select * from `diary_like`")
     fun listDiaryLike():Page<DiaryLike>
+
+    /**
+     * 操作数量表
+     */
+    @Insert("INSERT INTO `diary_like_count` VALUES(#{id},#{diaryId},#{love},#{unlove},#{collect})")
+    fun addLikeCount(likeCount: DiaryLikeCount):Int
+
+    @Select("SELECT * FROM `diary_like_count` WHERE diary_id = #{diaryId}")
+    fun queryLikeCount(diaryId: String):List<DiaryLikeCount>
+
+    @Update("UPDATE `diary_like_count`\n" +
+            "        SET love = #{love}, unlove = #{unlove},collect = #{collect}\n" +
+            "        WHERE diary_id = #{diaryId}")
+    fun upLikeCount(likeCount: DiaryLikeCount):Int
+
+    @Select("select * from `diary_like_count` order by love desc")
+    fun loveRank():Page<DiaryLikeCount>
+
+    @Select("select * from `diary_like_count` order by unlove desc")
+    fun unloveRank():Page<DiaryLikeCount>
+
+    @Select("select * from `diary_like_count` order by collect desc")
+    fun collectRank():Page<DiaryLikeCount>
 }

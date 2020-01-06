@@ -1,29 +1,30 @@
 package com.example.debut.entity;
 
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(value = "DiaryLike", description = "用户对日记的操作，赞、踩、收藏")
-public class DiaryLike {
-    @ApiModelProperty(value = "diary_like表的id,自增")
+@ApiModel(value = "DiaryLikeCount", description = "日记的赞、踩、收藏的数量")
+public class DiaryLikeCount {
+    @ApiModelProperty(value = "diary_like_count表的id,自增")
     private int id = 0;
-    @ApiModelProperty(value = "用户ID")
-    private String userId = "";
     @ApiModelProperty(value = "日记ID")
     private String diaryId = "";
-    @ApiModelProperty(value = "用户对日记的操作，赞(1)、踩(0),默认2")
-    private int love = 2;
-    @ApiModelProperty(value = "用户对日记的操作，收藏(1),取消收藏(0),默认2")
-    private int collect = 2;
+    @ApiModelProperty(value = "日记的赞数量")
+    private int love = 0;
+    @ApiModelProperty(value = "日记的踩数量")
+    private int unlove = 0;
+    @ApiModelProperty(value = "日记的收藏数量")
+    private int collect = 0;
 
-    public DiaryLike() {
+    public DiaryLikeCount() {
     }
 
-    public DiaryLike(int id, String userId, String diaryId, int love, int collect) {
+    public DiaryLikeCount(int id, String diaryId, int love, int unlove, int collect) {
         this.id = id;
-        this.userId = userId;
         this.diaryId = diaryId;
         this.love = love;
+        this.unlove = unlove;
         this.collect = collect;
     }
 
@@ -33,14 +34,6 @@ public class DiaryLike {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getDiaryId() {
@@ -57,6 +50,14 @@ public class DiaryLike {
 
     public void setLove(int love) {
         this.love = love;
+    }
+
+    public int getUnlove() {
+        return unlove;
+    }
+
+    public void setUnlove(int unlove) {
+        this.unlove = unlove;
     }
 
     public int getCollect() {
