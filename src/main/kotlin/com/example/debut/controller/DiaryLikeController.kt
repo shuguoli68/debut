@@ -93,28 +93,6 @@ class DiaryLikeController {
         return response
     }
 
-    @ApiOperation(value = "diary点赞列表")
-    @RequestMapping(value = ["/diaryLike/listLike"], method = [RequestMethod.POST])
-    fun listLike(@RequestBody  diaryLike: DiaryLike) : MyResponse<List<DiaryLike>> {
-        var response = MyResponse(201, "用户或日记不存在", listOf<DiaryLike>())
-        if (diaryLike.userId.isNullOrBlank() || diaryLike.diaryId.isNullOrBlank()){
-            return response
-        }
-        val list = diaryLikeMapper.queryLike(diaryLike)
-        return MyResponse(200, "查询成功", list)
-    }
-
-    @ApiOperation(value = "diary的收藏列表")
-    @RequestMapping(value = ["/diaryLike/listCollect"], method = [RequestMethod.POST])
-    fun listCollect(@RequestBody  diaryLike: DiaryLike) : MyResponse<List<DiaryLike>> {
-        var response = MyResponse(201, "用户或日记不存在", listOf<DiaryLike>())
-        if (diaryLike.userId.isNullOrBlank() || diaryLike.diaryId.isNullOrBlank()){
-            return response
-        }
-        val list = diaryLikeMapper.queryCollect(diaryLike)
-        return MyResponse(200, "查询成功", list)
-    }
-
     @ApiOperation(value = "diaryLike列表")
     @RequestMapping(value = ["/diaryLike/list"], method = [RequestMethod.POST])
     fun listDiaryLike(@RequestBody split: Split) : MyResponse<List<DiaryLike>> {
@@ -164,7 +142,8 @@ class DiaryLikeController {
             if (diaryLike.collect == 1)
                 ++count.collect
             else if (diaryLike.collect == 0)
-                --count.collect
+                if(count.collect>0)
+                    --count.collect
             diaryLikeMapper.upLikeCount(count)
         }else {
             val count = DiaryLikeCount()
@@ -190,9 +169,11 @@ class DiaryLikeController {
             if (oldM.love != newM.love){
                 if (newM.love == 1) {
                     ++count.love
-                    --count.unlove
+                    if(count.unlove>0)
+                        --count.unlove
                 } else if (newM.love == 0) {
-                    --count.love
+                    if(count.love>0)
+                        --count.love
                     ++count.unlove
                 }
             }
@@ -200,7 +181,8 @@ class DiaryLikeController {
                 if (newM.collect == 1) {
                     ++count.collect
                 } else if (newM.collect == 0) {
-                    --count.collect
+                    if(count.collect>0)
+                        --count.collect
                 }
             }
             diaryLikeMapper.upLikeCount(count)
