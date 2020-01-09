@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : debut
-Source Server Version : 50133
+Source Server         : lsg
+Source Server Version : 80018
 Source Host           : localhost:3306
 Source Database       : db_javaee_debut
 
 Target Server Type    : MYSQL
-Target Server Version : 50133
+Target Server Version : 80018
 File Encoding         : 65001
 
-Date: 2020-01-06 18:01:21
+Date: 2020-01-09 11:01:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -50,9 +50,9 @@ CREATE TABLE `banner` (
 -- ----------------------------
 -- Records of banner
 -- ----------------------------
-INSERT INTO `banner` VALUES ('1', 'banner1.png', 'https://translate.google.cn/', '都市生活', 'banner图片', '');
-INSERT INTO `banner` VALUES ('2', 'banner2.png', 'https://github.com/', '野生自然', 'banner图片', '');
-INSERT INTO `banner` VALUES ('3', 'banner3.png', 'https://baidu.com/', '景区风光', 'banner图片', '');
+INSERT INTO `banner` VALUES ('1', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531798262708&di=53d278a8427f482c5b836fa0e057f4ea&imgtype=0&src=http%3A%2F%2Fh.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F342ac65c103853434cc02dda9f13b07eca80883a.jpg', 'https://translate.google.cn/', '都市生活', 'banner图片', '');
+INSERT INTO `banner` VALUES ('2', 'https://b-ssl.duitang.com/uploads/item/201709/26/20170926131419_8YhLA.jpeg', 'https://github.com/', '野生自然', 'banner图片', '');
+INSERT INTO `banner` VALUES ('3', 'https://b-ssl.duitang.com/uploads/item/201510/14/20151014172010_RnJVz.jpeg', 'https://baidu.com/', '景区风光', 'banner图片', '');
 
 -- ----------------------------
 -- Table structure for `center_diary_tag`
@@ -134,15 +134,6 @@ CREATE TABLE `diary` (
 -- ----------------------------
 -- Records of diary
 -- ----------------------------
-INSERT INTO `diary` VALUES ('986131', '金融', '十二分金额看过惹人家看', '0', '31', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '142567');
-INSERT INTO `diary` VALUES ('123531', '黄金', '时开车门都没时考评得分时面覅', '3', '5', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '123456');
-INSERT INTO `diary` VALUES ('456', '底', '哦时开车门都没时考评得分时面覅', '3', '5', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '123456');
-INSERT INTO `diary` VALUES ('123', '底', '哦时开车门都没时考评得分时面覅', '3', '5', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '123456');
-INSERT INTO `diary` VALUES ('15658', 'kol', '为借口的出口量', '1', '5', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '123456');
-INSERT INTO `diary` VALUES ('15658678', 'kol', '为借口的出口量', '1', '5', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '123456');
-INSERT INTO `diary` VALUES ('12121578033729348', '2020元旦', '放了一天假', '1', '1', '2020-01-03 14:42:09', '2020-01-03 15:48:22', '1212');
-INSERT INTO `diary` VALUES ('12121578043333953', '35sg', 'gfwgsdg', '0', '0', '2020-01-03 17:22:14', '2020-01-03 17:22:14', '1212');
-INSERT INTO `diary` VALUES ('12121578043567694', '35sg', 'gfwgsdg', '0', '0', '2020-01-03 17:26:07', '2020-01-03 17:26:07', '1212');
 
 -- ----------------------------
 -- Table structure for `diary_like`
@@ -337,23 +328,25 @@ CREATE TABLE `user` (
   `phone` varchar(20) DEFAULT '',
   `sex` int(11) DEFAULT '0' COMMENT '0:女,1:男',
   `age` int(11) DEFAULT '18' COMMENT '年龄',
-  `create_time` datetime DEFAULT '0000-00-00 00:00:00' COMMENT '创建的时间戳',
-  `update_time` datetime DEFAULT '0000-00-00 00:00:00' COMMENT '最近修改User的时间戳',
+  `create_time` datetime DEFAULT NULL COMMENT '创建的时间戳',
+  `update_time` datetime DEFAULT NULL COMMENT '最近修改User的时间戳',
   PRIMARY KEY (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('123456', '111111', '132250202', '1', '23', '2019-06-05 17:20:59', '0000-00-00 00:00:00');
-INSERT INTO `user` VALUES ('145906', '123456', '1365000002', '0', '31', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `user` VALUES ('142567', '567111', '132250202', '1', '15', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `user` VALUES ('12', '1234111', '132250202', '1', '23', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `user` VALUES ('1235', '123456', '1365000002', '0', '31', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `user` VALUES ('127895', '123456', '1365000002', '0', '31', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `user` VALUES ('88', '123456', '132250202', '2', '23', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `user` VALUES ('818', '123456', '132250202', '2', '23', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `user` VALUES ('123456', '111111', '132250202', '1', '23', '2019-06-05 17:20:59', null);
+INSERT INTO `user` VALUES ('145906', '123456', '1365201902', '0', '31', '2019-08-08 08:08:08', '2019-08-08 08:08:08');
+INSERT INTO `user` VALUES ('142567', '567111', '132250202', '1', '15', '2019-02-02 02:02:02', '2019-02-02 02:02:02');
+INSERT INTO `user` VALUES ('121', '123456', '13202020202', '0', '30', '2020-01-07 14:02:16', '2020-01-07 14:02:16');
+INSERT INTO `user` VALUES ('12', '1234111', '132250202', '1', '23', '2019-02-02 02:02:02', '2019-02-02 02:02:02');
+INSERT INTO `user` VALUES ('1235', '123456', '1365000002', '0', '31', '2019-10-10 10:10:10', '2019-10-10 10:10:10');
+INSERT INTO `user` VALUES ('127895', '123456', '1365000902', '0', '31', '2019-09-09 09:09:09', '2019-09-09 09:09:09');
+INSERT INTO `user` VALUES ('88', '123456', '132250202', '2', '23', '2019-09-09 09:09:09', '2019-09-09 09:09:09');
+INSERT INTO `user` VALUES ('818', '123456', '132250202', '2', '23', '2019-11-11 11:11:11', '2019-11-11 11:11:11');
 INSERT INTO `user` VALUES ('1212', '123456', '132250202', '2', '23', '2020-01-02 17:18:10', '2020-01-02 19:07:31');
+INSERT INTO `user` VALUES ('131', '123456', '1223445354', '1', '18', '2020-01-07 14:33:05', '2020-01-07 14:33:05');
 
 -- ----------------------------
 -- Table structure for `work`
