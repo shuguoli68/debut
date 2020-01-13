@@ -106,9 +106,9 @@ public class FileController {
 
     @ApiOperation(value = "File列表")
     @RequestMapping(value = "/file/list", method = RequestMethod.POST)
-    MyResponse<List<UploadFileResponse>> listFile(@RequestBody Split split) {
+    List<UploadFileResponse> listFile(@RequestBody Split split) {
         PageHelper.startPage(split.getPageNum(), split.getPageSize());
         List<UploadFileResponse> list = fileMapper.listFile();
-        return new MyResponse(200, "查询成功", list);
+        return list;
     }
 }
