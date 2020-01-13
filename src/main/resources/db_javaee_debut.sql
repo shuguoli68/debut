@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : debut
+Source Server         : lsg
 Source Server Version : 80018
 Source Host           : localhost:3306
 Source Database       : db_javaee_debut
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80018
 File Encoding         : 65001
 
-Date: 2020-01-13 11:46:33
+Date: 2020-01-13 17:33:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -318,6 +318,24 @@ INSERT INTO `diary_theme` VALUES ('7', '7', '市场/销售');
 INSERT INTO `diary_theme` VALUES ('8', '8', '人事/财务/行政');
 INSERT INTO `diary_theme` VALUES ('9', '9', '其他');
 INSERT INTO `diary_theme` VALUES ('10', '0', '未知');
+
+-- ----------------------------
+-- Table structure for `sign`
+-- ----------------------------
+DROP TABLE IF EXISTS `sign`;
+CREATE TABLE `sign` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(50) DEFAULT NULL,
+  `ct_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sign
+-- ----------------------------
+INSERT INTO `sign` VALUES ('1', '1212', '2020-01-13 00:00:00');
+INSERT INTO `sign` VALUES ('2', '131', '2020-01-13 00:00:00');
+INSERT INTO `sign` VALUES ('3', '818', '2020-01-13 00:00:00');
 
 -- ----------------------------
 -- Table structure for `token`

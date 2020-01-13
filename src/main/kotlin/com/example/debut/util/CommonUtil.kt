@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
+import io.swagger.annotations.ApiModelProperty
 import org.springframework.web.context.request.RequestContextHolder
 import org.springframework.web.context.request.ServletRequestAttributes
 import javax.servlet.http.HttpServletRequest
@@ -19,6 +20,16 @@ object CommonUtil {
     fun getNowDate() : Date{
         val date = Date()//获得系统时间.
         val sdf = SimpleDateFormat( " yyyy-MM-dd HH:mm:ss " )
+        val time = sdf.parse( sdf.format(date) )
+        return time
+    }
+
+    /**
+     * 获取今天，年月日
+     */
+    fun getToday() : Date{
+        val date = Date()//获得系统时间.
+        val sdf = SimpleDateFormat( " yyyy-MM-dd" )
         val time = sdf.parse( sdf.format(date) )
         return time
     }
