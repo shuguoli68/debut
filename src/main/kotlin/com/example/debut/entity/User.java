@@ -9,6 +9,8 @@ import java.util.List;
 
 @ApiModel(value = "user实体")
 public class User{
+    @ApiModelProperty(value = "user表的id，自增")
+    private int id=0;
     @ApiModelProperty(value = "用户userId",required = true)
     private String userId="";
     @ApiModelProperty(value = "用户登录密码")
@@ -29,7 +31,8 @@ public class User{
     @Override
     public String toString() {
         return "User{" +
-                "userId='" + userId + '\'' +
+                "id=" + id +
+                ", userId='" + userId + '\'' +
                 ", passWord='" + passWord + '\'' +
                 ", phone='" + phone + '\'' +
                 ", sex=" + sex +
@@ -38,6 +41,14 @@ public class User{
                 ", utTime=" + utTime +
                 ", diarys=" + diarys +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUserId() {

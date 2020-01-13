@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository
 @Repository
 interface UserMapper {
 
-    @Insert("INSERT INTO `user` VALUES(#{userId},#{passWord},#{phone},#{sex},#{age},#{ctTime},#{utTime})")
+    @Insert("INSERT INTO `user` VALUES(#{id},#{userId},#{passWord},#{phone},#{sex},#{age},#{ctTime},#{utTime})")
     fun register(user: User):Int
 
     @Delete("DELETE FROM `user` WHERE user_id = #{userId}")
