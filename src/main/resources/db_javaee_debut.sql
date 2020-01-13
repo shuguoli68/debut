@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : lsg
+Source Server         : debut
 Source Server Version : 80018
 Source Host           : localhost:3306
 Source Database       : db_javaee_debut
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80018
 File Encoding         : 65001
 
-Date: 2020-01-09 11:01:22
+Date: 2020-01-13 11:46:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -63,7 +63,7 @@ CREATE TABLE `center_diary_tag` (
   `diary_id` varchar(50) NOT NULL,
   `tag_id` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of center_diary_tag
@@ -80,6 +80,14 @@ INSERT INTO `center_diary_tag` VALUES ('12', '12121578043567694', '5');
 INSERT INTO `center_diary_tag` VALUES ('13', '12121578043567694', '8');
 INSERT INTO `center_diary_tag` VALUES ('14', '12121578043567694', '9');
 INSERT INTO `center_diary_tag` VALUES ('15', '12121578043567694', '10');
+INSERT INTO `center_diary_tag` VALUES ('16', '12121578639136550', '6');
+INSERT INTO `center_diary_tag` VALUES ('17', '12121578639136550', '5');
+INSERT INTO `center_diary_tag` VALUES ('18', '12121578639136550', '8');
+INSERT INTO `center_diary_tag` VALUES ('19', '12121578639136550', '9');
+INSERT INTO `center_diary_tag` VALUES ('20', '12121578639136550', '10');
+INSERT INTO `center_diary_tag` VALUES ('21', '12121578639869772', '0');
+INSERT INTO `center_diary_tag` VALUES ('22', '12121578640347134', '0');
+INSERT INTO `center_diary_tag` VALUES ('23', '12121578640655086', '0');
 
 -- ----------------------------
 -- Table structure for `center_diary_theme`
@@ -91,13 +99,17 @@ CREATE TABLE `center_diary_theme` (
   `theme_id` int(11) DEFAULT NULL,
   `sub_theme_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of center_diary_theme
 -- ----------------------------
 INSERT INTO `center_diary_theme` VALUES ('1', '12121578033729348', '1', '1');
 INSERT INTO `center_diary_theme` VALUES ('2', '121324', '1', '1');
+INSERT INTO `center_diary_theme` VALUES ('3', '12121578639136550', '0', '0');
+INSERT INTO `center_diary_theme` VALUES ('4', '12121578639869772', '1', '13');
+INSERT INTO `center_diary_theme` VALUES ('5', '12121578640347134', '1', '4');
+INSERT INTO `center_diary_theme` VALUES ('6', '12121578640655086', '1', '12');
 
 -- ----------------------------
 -- Table structure for `company`
@@ -134,6 +146,10 @@ CREATE TABLE `diary` (
 -- ----------------------------
 -- Records of diary
 -- ----------------------------
+INSERT INTO `diary` VALUES ('12121578639136550', '35sg', 'gfwgsdg', '0', '0', '2020-01-10 14:52:16', '2020-01-10 14:52:16', '1212');
+INSERT INTO `diary` VALUES ('12121578639869772', '如何加', '告诉看过心胸宽广u反正会风中劲草喜剧房租回家做饭给现金举行ch6868i关系就像个就高兴发i死舒服发家致富紧张个这句负责中介费徐句喜剧u反正接着发巨款v看v房租几分钟继续看徐fzujxgjxvkv，，ku发试卷租房客虚空嘘嘘负责就像个开心果开心果看v想发租u反正技工学校几个可惜个房租西沟几个选修课v看fzujfxgxjvjvk，if只需姐姐虚空v看吧风俗继续挂机小高考v徐看吧吃if自己洗干净刚下课续卡v想看吧吃发i在看小高考虚空虚空v显卡v想空虚发i这个小家具辛苦V型看徐v显卡复习', '1', '13', '2020-01-10 15:04:29', '2020-01-10 15:04:29', '1212');
+INSERT INTO `diary` VALUES ('12121578640347134', 'u顾个', '告诉看过心胸宽广u反正会风中劲草喜剧房租回家做饭给现金举行ch6868i关系就像个就高兴发i死舒服发家致富紧张个这句负责中介费徐句喜剧u反正接着发巨款v看v房租几分钟继续看徐fzujxgjxvkv，，ku发试卷租房客虚空嘘嘘负责就像个开心果开心果看v想发租u反正技工学校几个可惜个房租西沟几个选修课v看fzujfxgxjvjvk，if只需姐姐虚空v看吧风俗继续挂机小高考v徐看吧吃if自己洗干净刚下课续卡v想看吧吃发i在看小高考虚空虚空v显卡v想空虚发i这个小家具辛苦V型看徐v显卡复习', '1', '4', '2020-01-10 15:12:27', '2020-01-10 15:12:27', '1212');
+INSERT INTO `diary` VALUES ('12121578640655086', '蹲个坑', '告诉看过心胸宽广u反正会风中劲草喜剧房租回家做饭给现金举行ch6868i关系就像个就高兴发i死舒服发家致富紧张个这句负责中介费徐句喜剧u反正接着发巨款v看v房租几分钟继续看徐fzujxgjxvkv，，ku发试卷租房客虚空嘘嘘负责就像个开心果开心果看v想发租u反正技工学校几个可惜个房租西沟几个选修课v看fzujfxgxjvjvk，if只需姐姐虚空v看吧风俗继续挂机小高考v徐看吧吃if自己洗干净刚下课续卡v想看吧吃发i在看小高考虚空虚空v显卡v想空虚发i这个小家具辛苦V型看徐v显卡复习', '1', '12', '2020-01-10 15:17:35', '2020-01-10 15:17:35', '1212');
 
 -- ----------------------------
 -- Table structure for `diary_like`
@@ -319,6 +335,26 @@ CREATE TABLE `token` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `up_file`
+-- ----------------------------
+DROP TABLE IF EXISTS `up_file`;
+CREATE TABLE `up_file` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `file_name` varchar(255) DEFAULT NULL,
+  `file_path` varchar(2550) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `file_type` varchar(255) DEFAULT NULL,
+  `size` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of up_file
+-- ----------------------------
+INSERT INTO `up_file` VALUES ('1', 'fbok.png', 'http://localhost:8085/downloadFile/fbok.png', 'image/png', '5169');
+INSERT INTO `up_file` VALUES ('2', '激活码.txt', 'http://localhost:8085/downloadFile/%E6%BF%80%E6%B4%BB%E7%A0%81.txt', 'text/plain', '3677');
+INSERT INTO `up_file` VALUES ('5', 'enjoy.png', 'http://localhost:8085/downloadFile/enjoy.png', 'image/png', '1384');
+
+-- ----------------------------
 -- Table structure for `user`
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
@@ -336,7 +372,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('123456', '111111', '132250202', '1', '23', '2019-06-05 17:20:59', null);
+INSERT INTO `user` VALUES ('123456', '111111', '132250202', '1', '23', '2019-06-05 17:20:59', '2020-01-09 14:56:42');
 INSERT INTO `user` VALUES ('145906', '123456', '1365201902', '0', '31', '2019-08-08 08:08:08', '2019-08-08 08:08:08');
 INSERT INTO `user` VALUES ('142567', '567111', '132250202', '1', '15', '2019-02-02 02:02:02', '2019-02-02 02:02:02');
 INSERT INTO `user` VALUES ('121', '123456', '13202020202', '0', '30', '2020-01-07 14:02:16', '2020-01-07 14:02:16');

@@ -9,11 +9,11 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface FileMapper {
-    @Insert("INSERT INTO `up_file` VALUES(#{id},#{fileName},#{fileDownloadUri},#{fileType},#{size})")
+    @Insert("INSERT INTO `up_file` VALUES(#{id},#{fileName},#{filePath},#{fileType},#{size})")
     fun addFile(up_file: UploadFileResponse):Int
 
-    @Delete("DELETE FROM `up_file` WHERE file_download_url = #{fileDownloadUri}")
-    fun delFile(fileDownloadUri: String):Int
+    @Delete("DELETE FROM `up_file` WHERE file_path = #{filePath}")
+    fun delFile(filePath: String):Int
 
     @Select("select * from `up_file`")
     fun listFile():Page<UploadFileResponse>

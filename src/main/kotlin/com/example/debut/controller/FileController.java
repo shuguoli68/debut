@@ -89,10 +89,10 @@ public class FileController {
     @RequestMapping(value = "/file/del", method = RequestMethod.POST)
     MyResponse<Boolean> delFile(@RequestBody UploadFileResponse banner) {
         MyResponse response = new MyResponse(201, "Path为空", false);
-        if (banner.getFileDownloadUri().isEmpty()){
+        if (banner.getFilePath().isEmpty()){
             return response;
         }
-        int value = fileMapper.delFile(banner.getFileDownloadUri());
+        int value = fileMapper.delFile(banner.getFilePath());
         if (value>0){
             response.setMsg("删除成功");
             response.setCode(200);

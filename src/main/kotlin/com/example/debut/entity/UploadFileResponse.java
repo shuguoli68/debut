@@ -8,21 +8,21 @@ public class UploadFileResponse {
     @ApiModelProperty(value = "file表的id,自增")
     private int id =0 ;
     @ApiModelProperty(value = "file表的fileName,文件名称，带后缀")
-    private String fileName;
-    @ApiModelProperty(value = "file表的fileDownloadUri,文件完整路径")
-    private String fileDownloadUri;
-    @ApiModelProperty(value = "file表的fileDownloadUri,文件类型")
-    private String fileType;
+    private String fileName="";
+    @ApiModelProperty(value = "file表的filePath,文件完整路径")
+    private String filePath ="";
+    @ApiModelProperty(value = "file表的fileType,文件类型")
+    private String fileType="";
     @ApiModelProperty(value = "file表的size,文件大小，单位kb")
-    private long size;
+    private long size=0L;
 
     public UploadFileResponse() {
     }
 
-    public UploadFileResponse(int id, String fileName, String fileDownloadUri, String fileType, long size) {
+    public UploadFileResponse(int id, String fileName, String filePath, String fileType, long size) {
         this.id = id;
         this.fileName = fileName;
-        this.fileDownloadUri = fileDownloadUri;
+        this.filePath = filePath;
         this.fileType = fileType;
         this.size = size;
     }
@@ -35,12 +35,12 @@ public class UploadFileResponse {
         this.fileName = fileName;
     }
 
-    public String getFileDownloadUri() {
-        return fileDownloadUri;
+    public String getFilePath() {
+        return filePath;
     }
 
-    public void setFileDownloadUri(String fileDownloadUri) {
-        this.fileDownloadUri = fileDownloadUri;
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     public String getFileType() {
@@ -64,7 +64,7 @@ public class UploadFileResponse {
         return "UploadFileResponse{" +
                 "id=" + id +
                 ", fileName='" + fileName + '\'' +
-                ", fileDownloadUri='" + fileDownloadUri + '\'' +
+                ", fileDownloadUri='" + filePath + '\'' +
                 ", fileType='" + fileType + '\'' +
                 ", size=" + size +
                 '}';
