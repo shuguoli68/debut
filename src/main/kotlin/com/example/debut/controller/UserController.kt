@@ -26,8 +26,8 @@ class UserController {
 
     @ApiOperation(value = "测试接口")
     @RequestMapping(value = ["/"], method = [RequestMethod.GET])
-    fun test():String{
-        return "test"
+    fun test():MyResponse<Boolean> {
+        return MyResponse(200, "测试接口，请求成功", true)
     }
 
     @ApiOperation(value = "查看在线人数")

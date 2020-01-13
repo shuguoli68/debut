@@ -30,7 +30,7 @@ class SwaggerConf {
         return ApiInfoBuilder()
                 .title("debut后台api接口文档")
                 .description("json 风格接口")
-                .termsOfServiceUrl("https://www.lijinpeng.top")
+                .termsOfServiceUrl("http://127.0.0.1:8085/doc.html")
                 .version("1.0")
                 .build()
     }

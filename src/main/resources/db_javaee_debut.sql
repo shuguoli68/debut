@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80018
 File Encoding         : 65001
 
-Date: 2020-01-13 17:59:35
+Date: 2020-01-13 21:12:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -363,7 +363,7 @@ CREATE TABLE `up_file` (
   `file_type` varchar(255) DEFAULT NULL,
   `size` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of up_file
@@ -371,12 +371,14 @@ CREATE TABLE `up_file` (
 INSERT INTO `up_file` VALUES ('1', 'fbok.png', 'http://localhost:8085/downloadFile/fbok.png', 'image/png', '5169');
 INSERT INTO `up_file` VALUES ('2', '激活码.txt', 'http://localhost:8085/downloadFile/%E6%BF%80%E6%B4%BB%E7%A0%81.txt', 'text/plain', '3677');
 INSERT INTO `up_file` VALUES ('5', 'enjoy.png', 'http://localhost:8085/downloadFile/enjoy.png', 'image/png', '1384');
+INSERT INTO `up_file` VALUES ('6', 'lyf_2.jpg', 'http://127.0.0.1:8085/downloadFile/lyf_2.jpg', 'image/jpeg', '71369');
 
 -- ----------------------------
 -- Table structure for `user`
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(20) NOT NULL,
   `pass_word` varchar(20) NOT NULL,
   `phone` varchar(20) DEFAULT '',
@@ -384,24 +386,20 @@ CREATE TABLE `user` (
   `age` int(11) DEFAULT '18' COMMENT '年龄',
   `create_time` datetime DEFAULT NULL COMMENT '创建的时间戳',
   `update_time` datetime DEFAULT NULL COMMENT '最近修改User的时间戳',
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`user_id`,`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`user_id`,`id`),
+  KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('123456', '111111', '132250202', '1', '23', '2019-06-05 17:20:59', '2020-01-09 14:56:42', '1');
-INSERT INTO `user` VALUES ('145906', '123456', '1365201902', '0', '31', '2019-08-08 08:08:08', '2019-08-08 08:08:08', '1');
-INSERT INTO `user` VALUES ('142567', '567111', '132250202', '1', '15', '2019-02-02 02:02:02', '2019-02-02 02:02:02', '1');
-INSERT INTO `user` VALUES ('121', '123456', '13202020202', '0', '30', '2020-01-07 14:02:16', '2020-01-07 14:02:16', '1');
-INSERT INTO `user` VALUES ('12', '1234111', '132250202', '1', '23', '2019-02-02 02:02:02', '2019-02-02 02:02:02', '1');
-INSERT INTO `user` VALUES ('1235', '123456', '1365000002', '0', '31', '2019-10-10 10:10:10', '2019-10-10 10:10:10', '1');
-INSERT INTO `user` VALUES ('127895', '123456', '1365000902', '0', '31', '2019-09-09 09:09:09', '2019-09-09 09:09:09', '1');
-INSERT INTO `user` VALUES ('88', '123456', '132250202', '2', '23', '2019-09-09 09:09:09', '2019-09-09 09:09:09', '1');
-INSERT INTO `user` VALUES ('818', '123456', '132250202', '2', '23', '2019-11-11 11:11:11', '2019-11-11 11:11:11', '1');
-INSERT INTO `user` VALUES ('1212', '123456', '132250202', '2', '23', '2020-01-02 17:18:10', '2020-01-02 19:07:31', '1');
-INSERT INTO `user` VALUES ('131', '123456', '1223445354', '1', '18', '2020-01-07 14:33:05', '2020-01-07 14:33:05', '1');
+INSERT INTO `user` VALUES ('1', '818', '123456', '13294659161', '0', '20', '2020-01-13 21:02:32', '2020-01-13 21:02:32');
+INSERT INTO `user` VALUES ('2', '12', '123456', '13294659161', '0', '20', '2020-01-13 21:02:26', '2020-01-13 21:02:26');
+INSERT INTO `user` VALUES ('3', '123456', '123456', '13294659161', '0', '20', '2020-01-13 21:01:46', '2020-01-13 21:01:46');
+INSERT INTO `user` VALUES ('4', '1212', '123456', '13294659161', '0', '20', '2020-01-13 21:01:40', '2020-01-13 21:01:40');
+INSERT INTO `user` VALUES ('5', '121', '123456', '13294659161', '0', '20', '2020-01-13 21:01:32', '2020-01-13 21:01:32');
+INSERT INTO `user` VALUES ('6', '525', '123456', '13200000000', '1', '18', '2020-01-13 21:12:14', '2020-01-13 21:12:14');
+INSERT INTO `user` VALUES ('7', '111', '123456', '13200000000', '1', '18', '2020-01-13 21:12:26', '2020-01-13 21:12:26');
 
 -- ----------------------------
 -- Table structure for `work`
