@@ -13,6 +13,8 @@ public class Sign {
     private String userId="";
     @ApiModelProperty(value = "创建时间,只需要年月日")
     private Date ctTime = new Date();
+    @ApiModelProperty(value = "创建时间字符串,年月日时分秒")
+    private String strTime = "";
 
     public int getId() {
         return id;
@@ -36,5 +38,13 @@ public class Sign {
 
     public void setCtTime(Date ctTime) {
         this.ctTime = ctTime;
+    }
+
+    public String getStrTime() {
+        return strTime;
+    }
+
+    public void setStrTime(String strTime) {
+        this.strTime = strTime;
     }
 }

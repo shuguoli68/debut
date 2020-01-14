@@ -29,6 +29,7 @@ class SignController {
             return response
         }
         sign.ctTime = CommonUtil.getToday()
+        sign.strTime = CommonUtil.getTime()
         val list = signMapper.queryById(sign.userId, sign.ctTime)
         if (list.isNotEmpty()){
             response.code = 203

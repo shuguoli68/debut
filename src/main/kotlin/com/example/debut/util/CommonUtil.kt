@@ -35,6 +35,15 @@ object CommonUtil {
     }
 
     /**
+     * 获取当前时间字符串
+     */
+    fun getTime() : String{
+        val date = Date()//获得系统时间.
+        val sdf = SimpleDateFormat( " yyyy-MM-dd HH:mm:ss " )
+        return sdf.format(date)
+    }
+
+    /**
      * 获取token
      */
     fun getToken(userID:String, password:String): String {

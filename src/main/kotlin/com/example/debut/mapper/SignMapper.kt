@@ -9,7 +9,7 @@ import java.util.*
 
 @Repository
 interface SignMapper {
-    @Insert("INSERT INTO `sign` VALUES(#{id},#{userId},#{ctTime})")
+    @Insert("INSERT INTO `sign` VALUES(#{id},#{userId},#{ctTime},#{strTime})")
     fun addSign(sign: Sign):Int
 
     @Select("SELECT * FROM `sign` WHERE user_id = #{userId} AND ct_time = #{ctTime}")
