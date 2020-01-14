@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80018
 File Encoding         : 65001
 
-Date: 2020-01-14 16:21:52
+Date: 2020-01-14 17:55:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -331,15 +331,19 @@ CREATE TABLE `sign` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(50) DEFAULT NULL,
   `ct_time` datetime DEFAULT NULL,
+  `str_time` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sign
 -- ----------------------------
-INSERT INTO `sign` VALUES ('1', '1212', '2020-01-13 00:00:00');
-INSERT INTO `sign` VALUES ('2', '131', '2020-01-13 00:00:00');
-INSERT INTO `sign` VALUES ('3', '818', '2020-01-13 00:00:00');
+INSERT INTO `sign` VALUES ('1', '1212', '2020-01-13 00:00:00', ' 2020-01-13 13:24:33 ');
+INSERT INTO `sign` VALUES ('2', '131', '2020-01-13 00:00:00', null);
+INSERT INTO `sign` VALUES ('3', '818', '2020-01-13 00:00:00', null);
+INSERT INTO `sign` VALUES ('4', '818', '2020-01-14 00:00:00', ' 2020-01-14 00:00:00 ');
+INSERT INTO `sign` VALUES ('9', '1212', '2020-01-12 00:00:00', ' 2020-01-12 17:48:46 ');
+INSERT INTO `sign` VALUES ('10', '1212', '2020-01-14 00:00:00', ' 2020-01-14 17:52:53 ');
 
 -- ----------------------------
 -- Table structure for `token`
