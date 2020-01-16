@@ -14,11 +14,11 @@ public class Foot {
     @ApiModelProperty(value = "toUserId,被查看者",required = true)
     private String toUserId="";
     @ApiModelProperty(value = "状态，0=未浏览，1=已浏览")
-    private int foot = 0;
+    private int foot = 1;
     @ApiModelProperty(value = "创建时间,只需要年月日")
     private Date ctTime = new Date();
-    @ApiModelProperty(value = "创建时间字符串,年月日时分秒")
-    private String strTime = "";
+    @ApiModelProperty(value = "创建时间,年月日时分秒")
+    private Date strTime = new Date();
 
     public int getId() {
         return id;
@@ -60,11 +60,11 @@ public class Foot {
         this.ctTime = ctTime;
     }
 
-    public String getStrTime() {
+    public Date getStrTime() {
         return strTime;
     }
 
-    public void setStrTime(String strTime) {
+    public void setStrTime(Date strTime) {
         this.strTime = strTime;
     }
 }

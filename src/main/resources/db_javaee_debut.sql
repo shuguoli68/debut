@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80018
 File Encoding         : 65001
 
-Date: 2020-01-16 14:35:25
+Date: 2020-01-16 15:25:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -333,13 +333,20 @@ CREATE TABLE `foot` (
   `to_user_id` varchar(255) DEFAULT NULL,
   `foot` int(11) DEFAULT NULL,
   `ct_time` datetime DEFAULT NULL,
-  `str_time` varchar(255) DEFAULT NULL,
+  `str_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of foot
 -- ----------------------------
+INSERT INTO `foot` VALUES ('1', '1212', '12', '1', '2020-01-16 00:00:00', '2020-01-16 15:19:05');
+INSERT INTO `foot` VALUES ('3', '1212', '123', '1', '2020-01-16 00:00:00', '2020-01-16 15:20:32');
+INSERT INTO `foot` VALUES ('4', '1212', '121', '1', '2020-01-16 00:00:00', '2020-01-16 15:20:36');
+INSERT INTO `foot` VALUES ('5', '1212', '111', '1', '2020-01-16 00:00:00', '2020-01-16 15:21:07');
+INSERT INTO `foot` VALUES ('6', '525', '1212', '1', '2020-01-16 00:00:00', '2020-01-16 15:21:20');
+INSERT INTO `foot` VALUES ('7', '818', '1212', '1', '2020-01-16 00:00:00', '2020-01-16 15:21:24');
+INSERT INTO `foot` VALUES ('8', '12', '1212', '1', '2020-01-16 00:00:00', '2020-01-16 15:21:27');
 
 -- ----------------------------
 -- Table structure for `love`
@@ -361,7 +368,6 @@ CREATE TABLE `love` (
 INSERT INTO `love` VALUES ('1', '1212', '12', '1', '2020-01-16 14:31:26', '2020-01-16 14:31:26');
 INSERT INTO `love` VALUES ('2', '1212', '121', '1', '2020-01-16 14:31:41', '2020-01-16 14:31:42');
 INSERT INTO `love` VALUES ('3', '1212', '123', '1', '2020-01-16 14:31:48', '2020-01-16 14:31:48');
-INSERT INTO `love` VALUES ('4', '1212', '111', '1', '2020-01-16 14:32:10', '2020-01-16 14:32:11');
 INSERT INTO `love` VALUES ('5', '111', '1212', '1', '2020-01-16 14:32:16', '2020-01-16 14:32:17');
 INSERT INTO `love` VALUES ('6', '12', '1212', '1', '2020-01-16 14:32:32', '2020-01-16 14:32:33');
 INSERT INTO `love` VALUES ('7', '121', '1212', '1', '2020-01-16 14:32:35', '2020-01-16 14:32:35');
