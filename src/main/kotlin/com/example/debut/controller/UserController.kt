@@ -151,7 +151,7 @@ class UserController {
         }
         val user = userService.userDiarys(userId = userId)
         if (user==null){
-            response.msg = "查询失败，用户没有发布diary"
+            response.msg = "查询失败，用户不存在"
             return response
         }
         return MyResponse(200, "查询成功",user)

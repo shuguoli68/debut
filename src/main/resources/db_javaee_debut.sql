@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80018
 File Encoding         : 65001
 
-Date: 2020-01-16 13:51:24
+Date: 2020-01-16 14:35:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -332,6 +332,8 @@ CREATE TABLE `foot` (
   `user_id` varchar(255) DEFAULT NULL,
   `to_user_id` varchar(255) DEFAULT NULL,
   `foot` int(11) DEFAULT NULL,
+  `ct_time` datetime DEFAULT NULL,
+  `str_time` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -348,12 +350,23 @@ CREATE TABLE `love` (
   `user_id` varchar(255) DEFAULT NULL,
   `to_user_id` varchar(255) DEFAULT NULL,
   `love` int(11) DEFAULT NULL,
+  `ct_time` datetime DEFAULT NULL,
+  `ut_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of love
 -- ----------------------------
+INSERT INTO `love` VALUES ('1', '1212', '12', '1', '2020-01-16 14:31:26', '2020-01-16 14:31:26');
+INSERT INTO `love` VALUES ('2', '1212', '121', '1', '2020-01-16 14:31:41', '2020-01-16 14:31:42');
+INSERT INTO `love` VALUES ('3', '1212', '123', '1', '2020-01-16 14:31:48', '2020-01-16 14:31:48');
+INSERT INTO `love` VALUES ('4', '1212', '111', '1', '2020-01-16 14:32:10', '2020-01-16 14:32:11');
+INSERT INTO `love` VALUES ('5', '111', '1212', '1', '2020-01-16 14:32:16', '2020-01-16 14:32:17');
+INSERT INTO `love` VALUES ('6', '12', '1212', '1', '2020-01-16 14:32:32', '2020-01-16 14:32:33');
+INSERT INTO `love` VALUES ('7', '121', '1212', '1', '2020-01-16 14:32:35', '2020-01-16 14:32:35');
+INSERT INTO `love` VALUES ('8', '123', '1212', '1', '2020-01-16 14:32:38', '2020-01-16 14:32:39');
+INSERT INTO `love` VALUES ('9', '525', '1212', '1', '2020-01-16 14:34:27', '2020-01-16 14:34:27');
 
 -- ----------------------------
 -- Table structure for `sign`

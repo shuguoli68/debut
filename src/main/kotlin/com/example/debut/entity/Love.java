@@ -3,6 +3,8 @@ package com.example.debut.entity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.util.Date;
+
 @ApiModel(value = "Love", description = "用户关注表")
 public class Love {
     @ApiModelProperty(value = "love表的id，自增")
@@ -13,6 +15,10 @@ public class Love {
     private String toUserId="";
     @ApiModelProperty(value = "状态，0=未关注，1=已关注")
     private int love = 0;
+    @ApiModelProperty(value = "创建时间,年月日时分秒")
+    private Date ctTime = new Date();
+    @ApiModelProperty(value = "更新时间,年月日时分秒")
+    private Date utTime = new Date();
 
     public int getId() {
         return id;
@@ -44,5 +50,21 @@ public class Love {
 
     public void setLove(int love) {
         this.love = love;
+    }
+
+    public Date getCtTime() {
+        return ctTime;
+    }
+
+    public void setCtTime(Date ctTime) {
+        this.ctTime = ctTime;
+    }
+
+    public Date getUtTime() {
+        return utTime;
+    }
+
+    public void setUtTime(Date utTime) {
+        this.utTime = utTime;
     }
 }
