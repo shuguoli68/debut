@@ -143,7 +143,7 @@ class UserController {
     @RequestMapping(value = ["/user/diarys"], method = [RequestMethod.POST])
     fun userDiarys(@RequestBody user: User) :MyResponse<User> {
         val userId = user.userId
-        var response = MyResponse(201, "用户名为空", User(/*userId,"","",0,0,0L,0L, arrayListOf()*/))
+        var response = MyResponse(201, "用户名为空", User())
         if (userId.isNullOrBlank()){
             return response
         }
