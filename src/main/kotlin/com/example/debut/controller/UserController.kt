@@ -4,9 +4,11 @@ import com.example.debut.base.MyResponse
 import com.example.debut.config.MyHttpSessionListener
 import com.example.debut.config.UserLoginToken
 import com.example.debut.entity.Diary
+import com.example.debut.entity.Split
 import com.example.debut.entity.User
 import com.example.debut.mapper.UserMapper
 import com.example.debut.util.CommonUtil
+import com.github.pagehelper.PageHelper
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import org.springframework.beans.factory.annotation.Autowired
@@ -139,8 +141,8 @@ class UserController {
     }
 
     @UserLoginToken
-    @ApiOperation(value = "查询用户详细资料，携带diary")
-    @RequestMapping(value = ["/user/diarys"], method = [RequestMethod.POST])
+    @ApiOperation(value = "查询用户详细资料")
+    @RequestMapping(value = ["/user/detail"], method = [RequestMethod.POST])
     fun userDiarys(@RequestBody user: User) :MyResponse<User> {
         val userId = user.userId
         var response = MyResponse(201, "用户名为空", User())
@@ -153,6 +155,14 @@ class UserController {
             return response
         }
         return MyResponse(200, "查询成功",user)
+    }
+
+    @ApiOperation(value = "获取user列表")
+    @RequestMapping(value = ["/user/list"], method = [RequestMethod.POST])
+    fun listDiary(@RequestBody split: Split) : MyResponse<List<User>> {
+        PageHelper.startPage<Diary>(split.pageNum?:1, split.pageSize?:20)
+        val list = userService.listUser()
+        return MyResponse(200, "查询成功", list)
     }
 
     /**

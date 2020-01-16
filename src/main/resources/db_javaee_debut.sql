@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80018
 File Encoding         : 65001
 
-Date: 2020-01-16 11:09:37
+Date: 2020-01-16 13:51:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -322,6 +322,38 @@ INSERT INTO `diary_theme` VALUES ('7', '7', '市场/销售');
 INSERT INTO `diary_theme` VALUES ('8', '8', '人事/财务/行政');
 INSERT INTO `diary_theme` VALUES ('9', '9', '其他');
 INSERT INTO `diary_theme` VALUES ('10', '0', '未知');
+
+-- ----------------------------
+-- Table structure for `foot`
+-- ----------------------------
+DROP TABLE IF EXISTS `foot`;
+CREATE TABLE `foot` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(255) DEFAULT NULL,
+  `to_user_id` varchar(255) DEFAULT NULL,
+  `foot` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of foot
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `love`
+-- ----------------------------
+DROP TABLE IF EXISTS `love`;
+CREATE TABLE `love` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(255) DEFAULT NULL,
+  `to_user_id` varchar(255) DEFAULT NULL,
+  `love` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of love
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `sign`

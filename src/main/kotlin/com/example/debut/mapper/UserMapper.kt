@@ -2,6 +2,7 @@ package com.example.debut.mapper
 
 import com.example.debut.entity.Diary
 import com.example.debut.entity.User
+import com.github.pagehelper.Page
 import org.apache.ibatis.annotations.*
 import org.springframework.stereotype.Repository
 
@@ -37,6 +38,9 @@ interface UserMapper {
             Result(property = "diarys", column = "user_id", many = Many(select = "com.example.debut.mapper.DiaryMapper.queryByUserId"))
     )
     fun userDiarys(userId:String):User
+
+    @Select("select * from `user`")
+    fun listUser(): Page<User>
 
     /**
      * 删除用户时，删除用户对文章的点赞、踩、收藏表中数据
