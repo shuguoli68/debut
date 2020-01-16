@@ -3,16 +3,16 @@ package com.example.debut.entity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(value = "Love", description = "用户关注表")
-public class Love {
-    @ApiModelProperty(value = "love表的id，自增")
+@ApiModel(value = "Foot", description = "用户浏览表")
+public class Foot {
+    @ApiModelProperty(value = "foot表的id，自增")
     private int id=0;
-    @ApiModelProperty(value = "userId,关注者",required = true)
+    @ApiModelProperty(value = "userId,查看者",required = true)
     private String userId="";
-    @ApiModelProperty(value = "toUserId,被关注者",required = true)
+    @ApiModelProperty(value = "toUserId,被查看者",required = true)
     private String toUserId="";
-    @ApiModelProperty(value = "状态，0=未关注，1=已关注")
-    private int love = 0;
+    @ApiModelProperty(value = "状态，0=未浏览，1=已浏览")
+    private int foot = 0;
 
     public int getId() {
         return id;
@@ -38,11 +38,11 @@ public class Love {
         this.toUserId = toUserId;
     }
 
-    public int getLove() {
-        return love;
+    public int getFoot() {
+        return foot;
     }
 
-    public void setLove(int love) {
-        this.love = love;
+    public void setFoot(int foot) {
+        this.foot = foot;
     }
 }
