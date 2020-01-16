@@ -76,7 +76,7 @@ class UserController {
         }
         print("pwd="+passWord+",0 pwd="+list[0].passWord)
         if (passWord != list[0].passWord){
-            response.msg = "登录失败，密码错误"+",userID="+userId+",pwd="+passWord+",size="+list.size+",list0="+list[0].toString()
+            response.msg = "登录失败，密码错误"
             return response
         }
         val token = CommonUtil.getToken(userId, passWord)
@@ -153,23 +153,6 @@ class UserController {
             return response
         }
         return MyResponse(200, "查询成功",user)
-    }
-
-    @UserLoginToken
-    @ApiOperation(value = "用户下的所有diary")
-    @RequestMapping(value = ["/user/listDiary"], method = [RequestMethod.POST])
-    fun listDiary(@RequestBody user: User) :MyResponse<List<Diary>> {
-        val userId = user.userId
-        var response = MyResponse(201, "用户名为空", listOf<Diary>())
-        if (userId.isNullOrBlank()){
-            return response
-        }
-        val diarys = userService.listDiary(userId = userId)
-        if (diarys.isEmpty()){
-            response.msg = "查询失败，用户没有发布diary"
-            return response
-        }
-        return MyResponse(200, "查询成功",diarys)
     }
 
     /**

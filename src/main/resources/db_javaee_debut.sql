@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80018
 File Encoding         : 65001
 
-Date: 2020-01-14 17:55:14
+Date: 2020-01-16 11:09:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -333,7 +333,7 @@ CREATE TABLE `sign` (
   `ct_time` datetime DEFAULT NULL,
   `str_time` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sign
@@ -344,6 +344,9 @@ INSERT INTO `sign` VALUES ('3', '818', '2020-01-13 00:00:00', null);
 INSERT INTO `sign` VALUES ('4', '818', '2020-01-14 00:00:00', ' 2020-01-14 00:00:00 ');
 INSERT INTO `sign` VALUES ('9', '1212', '2020-01-12 00:00:00', ' 2020-01-12 17:48:46 ');
 INSERT INTO `sign` VALUES ('10', '1212', '2020-01-14 00:00:00', ' 2020-01-14 17:52:53 ');
+INSERT INTO `sign` VALUES ('11', '1212', '2020-01-15 00:00:00', ' 2020-01-15 15:52:48 ');
+INSERT INTO `sign` VALUES ('12', '123', '2020-01-15 00:00:00', ' 2020-01-15 17:06:18 ');
+INSERT INTO `sign` VALUES ('13', '123', '2020-01-16 00:00:00', ' 2020-01-16 10:16:59 ');
 
 -- ----------------------------
 -- Table structure for `token`
@@ -395,8 +398,9 @@ INSERT INTO `up_file` VALUES ('14', 't0159005f9c4450c9cc.jpg', 'http://192.168.1
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(20) NOT NULL,
-  `pass_word` varchar(20) NOT NULL,
+  `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `pass_word` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT 'LiHui',
   `phone` varchar(20) DEFAULT '',
   `sex` int(11) DEFAULT '0' COMMENT '0:女,1:男',
   `age` int(11) DEFAULT '18' COMMENT '年龄',
@@ -404,18 +408,19 @@ CREATE TABLE `user` (
   `update_time` datetime DEFAULT NULL COMMENT '最近修改User的时间戳',
   PRIMARY KEY (`user_id`,`id`),
   KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '818', '123456', '13294659161', '0', '20', '2020-01-13 21:02:32', '2020-01-13 21:02:32');
-INSERT INTO `user` VALUES ('2', '12', '123456', '13294659161', '0', '20', '2020-01-13 21:02:26', '2020-01-13 21:02:26');
-INSERT INTO `user` VALUES ('3', '123456', '123456', '13294659161', '0', '20', '2020-01-13 21:01:46', '2020-01-13 21:01:46');
-INSERT INTO `user` VALUES ('4', '1212', '123456', '13294659161', '0', '20', '2020-01-13 21:01:40', '2020-01-13 21:01:40');
-INSERT INTO `user` VALUES ('5', '121', '123456', '13294659161', '0', '20', '2020-01-13 21:01:32', '2020-01-13 21:01:32');
-INSERT INTO `user` VALUES ('6', '525', '123456', '13200000000', '1', '18', '2020-01-13 21:12:14', '2020-01-13 21:12:14');
-INSERT INTO `user` VALUES ('7', '111', '123456', '13200000000', '1', '18', '2020-01-13 21:12:26', '2020-01-13 21:12:26');
+INSERT INTO `user` VALUES ('1', '818', '123456', null, '13294659161', '0', '20', '2020-01-13 21:02:32', '2020-01-13 21:02:32');
+INSERT INTO `user` VALUES ('2', '12', '123456', null, '13294659161', '0', '20', '2020-01-13 21:02:26', '2020-01-13 21:02:26');
+INSERT INTO `user` VALUES ('3', '123456', '123456', null, '13294659161', '0', '20', '2020-01-13 21:01:46', '2020-01-13 21:01:46');
+INSERT INTO `user` VALUES ('4', '1212', '123456', null, '13294659161', '0', '20', '2020-01-13 21:01:40', '2020-01-13 21:01:40');
+INSERT INTO `user` VALUES ('5', '121', '123456', null, '13294659161', '0', '20', '2020-01-13 21:01:32', '2020-01-13 21:01:32');
+INSERT INTO `user` VALUES ('6', '525', '123456', null, '13200000000', '1', '18', '2020-01-13 21:12:14', '2020-01-13 21:12:14');
+INSERT INTO `user` VALUES ('7', '111', '123456', null, '13200000000', '1', '18', '2020-01-13 21:12:26', '2020-01-13 21:12:26');
+INSERT INTO `user` VALUES ('8', '123', '123456', 'shuguo', '13200000000', '0', '30', '2020-01-15 16:33:05', '2020-01-15 16:33:05');
 
 -- ----------------------------
 -- Table structure for `work`

@@ -15,6 +15,8 @@ public class User{
     private String userId="";
     @ApiModelProperty(value = "用户登录密码")
     private String passWord="";
+    @ApiModelProperty(value = "用户昵称")
+    private String name="LiHui";
     @ApiModelProperty(value = "手机号码")
     private String phone="";
     @ApiModelProperty(value = "性别，整型")
@@ -61,6 +63,14 @@ public class User{
 
     public String getPassWord() {
         return passWord;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setPassWord(String passWord) {
