@@ -2,10 +2,7 @@ package com.example.debut.mapper
 
 import com.example.debut.entity.Love
 import com.github.pagehelper.Page
-import org.apache.ibatis.annotations.Delete
-import org.apache.ibatis.annotations.Insert
-import org.apache.ibatis.annotations.Select
-import org.apache.ibatis.annotations.Update
+import org.apache.ibatis.annotations.*
 import org.springframework.stereotype.Repository
 
 @Repository
@@ -25,10 +22,18 @@ interface LoveMapper {
     fun queryById(love: Love):List<Love>
 
     @Select("SELECT * FROM `love` WHERE user_id = #{userId} AND love = 1")
+    @Results(
+            Result(property = "toUserId", column = "to_user_id"),
+            Result(property = "user", column = "to_user_id", many = Many(select = "com.example.debut.mapper.UserMapper.queryById"))
+    )
     fun queryLove(userId:String):List<Love>
 
-    @Select("SELECT * FROM `love` WHERE to_user_id = #{userId} AND love = 1")
-    fun queryFan(userId:String):List<Love>
+    @Select("SELECT * FROM `love` WHERE to_user_id = #{toUserId} AND love = 1")
+    @Results(
+            Result(property = "userId", column = "user_id"),
+            Result(property = "user", column = "user_id", many = Many(select = "com.example.debut.mapper.UserMapper.queryById"))
+    )
+    fun queryFan(toUserId:String):List<Love>
 
     @Select("select * from `love`")
     fun listLove():Page<Love>

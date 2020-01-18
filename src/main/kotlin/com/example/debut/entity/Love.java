@@ -19,6 +19,8 @@ public class Love {
     private Date ctTime = new Date();
     @ApiModelProperty(value = "更新时间,年月日时分秒")
     private Date utTime = new Date();
+    @ApiModelProperty(value = "别人的信息，我关注的人或关注我的人")
+    private User user = new User();
 
     public int getId() {
         return id;
@@ -66,5 +68,13 @@ public class Love {
 
     public void setUtTime(Date utTime) {
         this.utTime = utTime;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

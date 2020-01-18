@@ -26,10 +26,6 @@ interface UserMapper {
     fun upUser(user: User):Int
 
     @Select("SELECT * FROM `user` WHERE user_id = #{userId}")
-    @Results(
-            Result(property = "userId", column = "user_id"),
-            Result(property = "diarys", column = "user_id", many = Many(select = "com.example.debut.mapper.DiaryMapper.queryByUserId"))
-    )
     fun queryById(userId:String):List<User>
 
     @Select("SELECT * FROM `user` WHERE user_id = #{userId}")

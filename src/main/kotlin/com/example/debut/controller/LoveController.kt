@@ -99,11 +99,11 @@ class LoveController {
     @ApiOperation(value = "粉丝列表，即关注我的用户列表")
     @RequestMapping(value = ["/love/queryFan"], method = [RequestMethod.POST])
     fun queryFan(@RequestBody  love: Love) : MyResponse<List<Love>> {
-        var response = MyResponse(201, "userId为空", listOf<Love>())
-        if (love.userId.isNullOrBlank()){
+        var response = MyResponse(201, "toUserId为空", listOf<Love>())
+        if (love.toUserId.isNullOrBlank()){
             return response
         }
-        val list = loveMapper.queryFan(love.userId)
+        val list = loveMapper.queryFan(love.toUserId)
         return MyResponse(200, "查询成功", list)
     }
 
