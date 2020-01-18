@@ -73,11 +73,11 @@ class FootController {
     @ApiOperation(value = "足迹，看过我的用户列表")
     @RequestMapping(value = ["/foot/queryFoot"], method = [RequestMethod.POST])
     fun queryFoot(@RequestBody  foot: Foot) : MyResponse<List<Foot>> {
-        var response = MyResponse(201, "userId为空", listOf<Foot>())
-        if (foot.userId.isNullOrBlank()){
+        var response = MyResponse(201, "toUserId为空", listOf<Foot>())
+        if (foot.toUserId.isNullOrBlank()){
             return response
         }
-        val list = footMapper.queryFoot(foot.userId)
+        val list = footMapper.queryFoot(foot.toUserId)
         return MyResponse(200, "查询成功", list)
     }
 
