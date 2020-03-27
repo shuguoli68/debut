@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 
-@Api(value = "Phone", tags = arrayOf("操作Phone，设备信息"))
+@Api(value = "Phone", tags = arrayOf("操作Phone，用户设备信息"))
 @RestController
 class PhoneController {
 
