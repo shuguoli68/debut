@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80018
 File Encoding         : 65001
 
-Date: 2020-01-16 15:25:16
+Date: 2020-03-27 16:49:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -373,6 +373,30 @@ INSERT INTO `love` VALUES ('6', '12', '1212', '1', '2020-01-16 14:32:32', '2020-
 INSERT INTO `love` VALUES ('7', '121', '1212', '1', '2020-01-16 14:32:35', '2020-01-16 14:32:35');
 INSERT INTO `love` VALUES ('8', '123', '1212', '1', '2020-01-16 14:32:38', '2020-01-16 14:32:39');
 INSERT INTO `love` VALUES ('9', '525', '1212', '1', '2020-01-16 14:34:27', '2020-01-16 14:34:27');
+
+-- ----------------------------
+-- Table structure for `phone`
+-- ----------------------------
+DROP TABLE IF EXISTS `phone`;
+CREATE TABLE `phone` (
+  `id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'id，自增',
+  `os` varchar(255) DEFAULT NULL COMMENT '手机系统',
+  `version` varchar(255) DEFAULT NULL COMMENT '手机系统版本',
+  `brand` varchar(255) DEFAULT NULL COMMENT '手机品牌',
+  `model` varchar(255) DEFAULT NULL COMMENT '手机型号',
+  `imei` varchar(255) DEFAULT NULL COMMENT '手机ID，IMEI',
+  `user_ids` varchar(255) DEFAULT NULL COMMENT '用户ID',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of phone
+-- ----------------------------
+INSERT INTO `phone` VALUES ('1', 'android', '9', 'mi', 'MI6X', '25946165445', '123456');
+INSERT INTO `phone` VALUES ('2', 'android', '9', 'mi', 'MI6X', '25946165445', '1212');
+INSERT INTO `phone` VALUES ('3', 'android', '9', 'huawei', '荣耀9', '8945165445', '1212');
+INSERT INTO `phone` VALUES ('4', 'android', '9', 'huawei', '荣耀9', '8945165445', '12');
+INSERT INTO `phone` VALUES ('5', 'android', '9', 'huawei', '荣耀9', '8945165445', '123456');
 
 -- ----------------------------
 -- Table structure for `sign`
