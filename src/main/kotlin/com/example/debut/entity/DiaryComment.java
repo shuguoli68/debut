@@ -3,6 +3,10 @@ package com.example.debut.entity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.util.Date;
+
+//日记的评论、对别人评论的回复
+
 @ApiModel(value = "DiaryComment", description = "用户对日记的评论、回复")
 public class DiaryComment {
     @ApiModelProperty(value = "diary_comment表的id,自增")
@@ -14,9 +18,11 @@ public class DiaryComment {
     @ApiModelProperty(value = "日记ID")
     private String diaryId = "";
     @ApiModelProperty(value = "被评论、回复者userId")
-    private int beUserId = 0;
+    private String beUserId = "";
     @ApiModelProperty(value = "被评论、回复者name")
-    private int beName = 2;
+    private String beName = "";
+    @ApiModelProperty(value = "评论时间")
+    private Date ctTime = new Date();
 
     public int getId() {
         return id;
@@ -50,19 +56,27 @@ public class DiaryComment {
         this.diaryId = diaryId;
     }
 
-    public int getBeUserId() {
+    public String getBeUserId() {
         return beUserId;
     }
 
-    public void setBeUserId(int beUserId) {
+    public void setBeUserId(String beUserId) {
         this.beUserId = beUserId;
     }
 
-    public int getBeName() {
+    public String getBeName() {
         return beName;
     }
 
-    public void setBeName(int beName) {
+    public void setBeName(String beName) {
         this.beName = beName;
+    }
+
+    public Date getCtTime() {
+        return ctTime;
+    }
+
+    public void setCtTime(Date ctTime) {
+        this.ctTime = ctTime;
     }
 }
