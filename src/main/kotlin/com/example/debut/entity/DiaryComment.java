@@ -7,6 +7,7 @@ import java.util.Date;
 
 //日记的评论、对别人评论的回复
 
+
 @ApiModel(value = "DiaryComment", description = "用户对日记的评论、回复")
 public class DiaryComment {
     @ApiModelProperty(value = "diary_comment表的id,自增")
