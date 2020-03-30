@@ -22,6 +22,8 @@ public class DiaryComment {
     private String beUserId = "";
     @ApiModelProperty(value = "被评论、回复者name")
     private String beName = "";
+    @ApiModelProperty(value = "评论的id,回复作者为0，回复其他人为diary_comment表的id")
+    private int beId = 0;
     @ApiModelProperty(value = "评论时间")
     private Date ctTime = new Date();
 
@@ -71,6 +73,14 @@ public class DiaryComment {
 
     public void setBeName(String beName) {
         this.beName = beName;
+    }
+
+    public int getBeId() {
+        return beId;
+    }
+
+    public void setBeId(int beId) {
+        this.beId = beId;
     }
 
     public Date getCtTime() {
