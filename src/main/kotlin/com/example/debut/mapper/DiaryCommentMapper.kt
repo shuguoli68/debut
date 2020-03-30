@@ -10,11 +10,12 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface DiaryCommentMapper {
-    @Insert("INSERT INTO `diary_comment` VALUES(#{id},#{diary_commentId},#{title})")
+    @Insert("INSERT INTO `diary_comment` VALUES(#{id},#{userId},#{name},#{diaryId},#{beUserId},#{beName},#{beId},#{ctTime})")
     fun addDiaryComment(diary_comment: DiaryComment):Int
 
-    @Select("SELECT * FROM `diary_comment` WHERE diary_comment_id = #{diary_commentId}")
-    fun queryById(diary_commentId:String):List<DiaryComment>
+    //只查询回复作者的
+    @Select("SELECT * FROM `diary_comment` WHERE diary_id = #{diaryId} AND be_id = 0")
+    fun queryById(diaryComment: DiaryComment):List<DiaryComment>
 
     @Select("select * from `diary_comment`")
     fun listDiaryComment():Page<DiaryComment>
