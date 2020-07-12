@@ -19,8 +19,8 @@ public class Foot {
     private Date ctTime = new Date();
     @ApiModelProperty(value = "创建时间,年月日时分秒")
     private Date strTime = new Date();
-    @ApiModelProperty(value = "别人的信息，我浏览过的人或浏览过我的人")
-    private User user = new User();
+//    @ApiModelProperty(value = "别人的信息，我浏览过的人或浏览过我的人")
+//    private User user = new User();
 
     public int getId() {
         return id;
@@ -70,11 +70,11 @@ public class Foot {
         this.strTime = strTime;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 }
