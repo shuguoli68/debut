@@ -8,3 +8,6 @@ SpringBoot + Mybatis + Redis,数据存储在UniServer，一个小的无需安装
 
 文档：  
 http://localhost:8085/doc.html
+
+makrdown语法查看：
+<a href="Markdown.mk" target="_blank">https://github.com/shuguoli68/debut/src/main/resources/Markdown.mk </a> 
