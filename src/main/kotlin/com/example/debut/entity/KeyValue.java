@@ -3,11 +3,15 @@ package com.example.debut.entity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotBlank;
+
 @ApiModel(value = "KeyValue")
 public class KeyValue {
     @ApiModelProperty(value = "KeyValue中的key")
+    @NotBlank(message = "key不能为空！")
     private String key;
     @ApiModelProperty(value = "KeyValue中的value")
+    @NotBlank(message = "value不能为空！")
     private String value;
 
     public String getKey() {

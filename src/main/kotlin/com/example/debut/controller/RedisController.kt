@@ -5,6 +5,7 @@ import com.example.debut.config.RedisUtils
 import com.example.debut.entity.KeyValue
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
@@ -20,7 +21,7 @@ class RedisController {
 
     @ApiOperation(value = "增加redis")
     @RequestMapping(value = ["/redis/add"], method = [RequestMethod.POST])
-    fun addRedis(@RequestBody bean: KeyValue) : MyResponse<Boolean> {
+    fun addRedis(@RequestBody @Validated bean: KeyValue) : MyResponse<Boolean> {
         var response = MyResponse(201, "key或value为空", false)
         if (bean.key.isNullOrBlank() || bean.value.isNullOrBlank()){
             return response
