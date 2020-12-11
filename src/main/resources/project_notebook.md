@@ -12,6 +12,14 @@
     <version>6.1.5.Final</version>
 </dependency>
 ```
+或
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-validation</artifactId>
+<!--            <version>2.3.3.RELEASE</version>-->
+</dependency>
+```
 参数校验规则：
 ```
 @Null 被注释的元素必须为 null
